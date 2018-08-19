@@ -24,6 +24,22 @@ class Searchbar extends React.Component
             width: "100%",
         };
 
+        const buttonStyles = {
+            fontSize: "30px",
+            margin: "0px 3px",
+            border: "3px solid lightblue",
+            borderRadius: "10px"
+        }
+
+
+        const inputStyles = {
+            fontSize: "30px",
+            margin: "0px 3px",
+            border: "3px solid lightblue",
+            borderRadius: "10px",
+            background: "#F5FFFA"
+        }
+
 
         if(this.props.firstEntered === true)
         {
@@ -32,8 +48,8 @@ class Searchbar extends React.Component
 
         return (
             <div style={styles}>
-                <input type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />
-                <button  onClick={() => this.props.handleSubmit(this.state.currentValue)}>Search</button>
+                <input style={inputStyles} type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />
+                <button style={buttonStyles} onClick={() => this.props.handleSubmit(this.state.currentValue)}>Search</button>
             </div>
         );
     }
