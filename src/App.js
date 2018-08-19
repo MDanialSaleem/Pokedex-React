@@ -18,9 +18,12 @@ class App extends Component {
       justifyContent: "center",
       alignItems: "center",
       flexWrap: "wrap",
-      alignContent: "flex-start"
     };
 
+    if(this.props.firstEntered)
+    {
+      styles.alignContent = "flex-start"
+    }
     return (
       <div style={styles} className="App">
         <Searchbar />
@@ -33,7 +36,8 @@ class App extends Component {
 const mapStateToProps = function(state)
 {
   return {
-    id: state.nationalId
+    id: state.nationalId,
+    firstEntered: state.firstEntered
   };
 }
 

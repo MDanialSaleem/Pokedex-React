@@ -21,8 +21,9 @@ class Searchbar extends React.Component
     render() {
         const styles = {
             border : "2px solid black",
-            width: "100%"
+            width: "100%",
         };
+
 
         if(this.props.firstEntered === true)
         {
@@ -32,7 +33,7 @@ class Searchbar extends React.Component
         return (
             <div style={styles}>
                 <input type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />
-                <button onClick={() => this.props.handleSubmit(this.state.currentValue)}>Search</button>
+                <button  onClick={() => this.props.handleSubmit(this.state.currentValue)}>Search</button>
             </div>
         );
     }
