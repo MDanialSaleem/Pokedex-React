@@ -16,28 +16,33 @@ class BasicInfo extends React.Component
     }
     componentDidMount()
     {
-        axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
-        .then(response => {
+        // axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
+        // .then(response => {
 
-            this.setState({
+        //     this.setState({
 
-                name:response.data.name,
-                abilities : response.data.abilities,
-                types: response.data.types,
-                moves: response.data.moves
-            });
-        });
+        //         name:response.data.name,
+        //         abilities : response.data.abilities,
+        //         types: response.data.types,
+        //         moves: response.data.moves
+        //     });
+        // });
     }
     render()
     {
+        const styles = {
+            background: "blue",
+        };
+
         return (
-            <div>
-                {this.state.name === null? null : <h1>{this.state.name}</h1>}
-                <ImageCard id={this.props.id} />
-                {this.state.abilities === null? null : <AbilitiCard abilities={this.state.abilities} />}
-                {this.state.types === null? null : <TypeCard types={this.state.types} />}
-                {this.state.moves === null? null : <MoveCard moves={this.state.moves} show={this.props.showMoves}/>}
-            </div>
+            <h1 style={styles}>Data Here</h1>
+            // <div>
+            //     {this.state.name === null? null : <h1>{this.state.name}</h1>}
+            //     <ImageCard id={this.props.id} />
+            //     {this.state.abilities === null? null : <AbilitiCard abilities={this.state.abilities} />}
+            //     {this.state.types === null? null : <TypeCard types={this.state.types} />}
+            //     {this.state.moves === null? null : <MoveCard moves={this.state.moves} show={this.props.showMoves}/>}
+            // </div>
         );
     }
 }

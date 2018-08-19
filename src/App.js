@@ -9,8 +9,20 @@ class App extends Component {
 
   render()
   {
+    const styles = {
+      background: "grey",
+      height: "100%",
+      width: "100%",
+      position: "fixed",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexWrap: "wrap",
+      alignContent: "flex-start"
+    };
+
     return (
-      <div className="App">
+      <div style={styles} className="App">
         <Searchbar />
         {this.props.id !== -1 ? <div><Navbar /><BasicInfo /></div>: null}
       </div>
