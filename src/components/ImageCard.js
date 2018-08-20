@@ -7,7 +7,8 @@ function ImageCard(props)
         display: "block",
         border: "20px solid yellow",
         borderRadius: "50%",
-        background: "white"
+        background: "white",
+        margin: "0px 3px"
     };
 
     return(

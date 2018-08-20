@@ -46,24 +46,27 @@ class BasicInfo extends React.Component
     render()
     {
         const styles = {
-            border: "2px solid blue",
             display: "flex",
             flexDirection: "row",
             justifyContent: "flex-start",
             alignItems: "center",
             width: "100%",
-            background: "green"
+            background: "green",
+            margin: "5px 5px"
         };
 
 
         const numberStyle = {
-            background: "white",
-            display: "inline"
+            background: "black",
+            color: "white",
+            display: "inline",
+            flexGrow: 1
         };
 
         const nameStyle = {
-            background: "red",
-            display: "inline"
+            background: "white",
+            display: "inline",
+            flexGrow: 1
         };
 
         const internalStyle = {
@@ -74,12 +77,17 @@ class BasicInfo extends React.Component
             height: "250px"
         };
 
+        const nameNumberStyle = {
+            display: "flex",
+            justifyContent: "space-between",
+        };
+
         return (
             <div style={styles}>
                 <ImageCard id={this.props.id} />
                 <div style={internalStyle}>
                     {this.state.name === null? null :
-                         <div>
+                         <div style = {nameNumberStyle}>
                              <h1 style={numberStyle}>#{this.props.id}</h1>
                              <h1 style={nameStyle}>{this.state.name}</h1>
                          </div>

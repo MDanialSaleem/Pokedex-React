@@ -19,10 +19,6 @@ class Searchbar extends React.Component
 
 
     render() {
-        const styles = {
-            border : "2px solid black"
-        };
-
         const buttonStyles = {
             fontSize: "30px",
             margin: "0px 3px",
@@ -39,7 +35,7 @@ class Searchbar extends React.Component
             background: "#F5FFFA"
         }
         return (
-            <div style={styles}>
+            <div>
                 <input style={inputStyles} type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />
                 <button style={buttonStyles} onClick={() => this.props.handleSubmit(this.state.currentValue)}>Search</button>
             </div>
