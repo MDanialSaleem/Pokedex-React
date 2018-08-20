@@ -6,8 +6,12 @@ class Navbar extends React.Component
 {
     render()
     {
+        const styles = {
+            boxSizing: "border-box",
+            border: "2px solid red"
+        };
         return (
-            <div>
+            <div style={styles}>
                 <button onClick={this.props.onShowMove}>Show moves</button>
             </div>
         );

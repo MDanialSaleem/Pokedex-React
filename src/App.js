@@ -14,20 +14,26 @@ class App extends Component {
       height: "100%",
       width: "100%",
       position: "fixed",
+      //flex starts here
       display: "flex",
-      justifyContent: "center",
+      flexDirection: "column",
       alignItems: "center",
-      flexWrap: "wrap",
+      justifyContent: "center"
     };
 
+    const internalStyle = {
+      width: "100%"
+    };
+
+    
     if(this.props.firstEntered)
     {
-      styles.alignContent = "flex-start"
+      styles.justifyContent = "flex-start";
     }
     return (
       <div style={styles} className="App">
         <Searchbar />
-        {this.props.id !== -1 ? <div><Navbar /><BasicInfo /></div>: null}
+        {this.props.id !== -1 ? <div style={internalStyle}><Navbar /><BasicInfo /></div>: null}
       </div>
     );
   }

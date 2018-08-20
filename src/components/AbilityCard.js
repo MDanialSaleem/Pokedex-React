@@ -1,12 +1,26 @@
 import React from "react";
 
-function AbilityCard(props)
+export default function(props)
 {
+    const styles = {
+        textAlign: "center",
+        background: "green"
+    };
+
+    const abilityStyle = {
+        display: "inline",
+        background: "white",
+        margin: "0px 3px"
+    };
+
+    const headingStyle = {
+        color: "red"
+    };
     props.abilities.reverse();
     return(
-        props.abilities.map(abilityObj => <h3 key={abilityObj.slot}>{abilityObj.ability.name}</h3>)
+        <div style={styles}>
+            <h6 style={headingStyle}>Abilities</h6>
+            {props.abilities.map(abilityObj => <h3 style={abilityStyle} key={abilityObj.slot}>{abilityObj.ability.name}</h3>)}
+        </div>
     );
 }
-
-
-export default AbilityCard;

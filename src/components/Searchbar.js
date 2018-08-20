@@ -20,8 +20,7 @@ class Searchbar extends React.Component
 
     render() {
         const styles = {
-            border : "2px solid black",
-            width: "100%",
+            border : "2px solid black"
         };
 
         const buttonStyles = {
@@ -39,13 +38,6 @@ class Searchbar extends React.Component
             borderRadius: "10px",
             background: "#F5FFFA"
         }
-
-
-        if(this.props.firstEntered === true)
-        {
-            styles.alignSelf = "flex-start";
-        }
-
         return (
             <div style={styles}>
                 <input style={inputStyles} type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />

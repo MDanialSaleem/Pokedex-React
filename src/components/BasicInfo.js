@@ -16,33 +16,47 @@ class BasicInfo extends React.Component
     }
     componentDidMount()
     {
-        // axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
-        // .then(response => {
-
-        //     this.setState({
-
-        //         name:response.data.name,
-        //         abilities : response.data.abilities,
-        //         types: response.data.types,
-        //         moves: response.data.moves
-        //     });
-        // });
+        axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
+        .then(response => {
+            this.setState({
+                name:response.data.name,
+                abilities : response.data.abilities,
+                types: response.data.types,
+                moves: response.data.moves
+            });
+        });
     }
     render()
     {
         const styles = {
-            background: "blue",
+            border: "2px solid blue",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            width: "100%"
+        };
+
+
+        const nameNumberStyle = {
+            background: "white",
+            display: "inline"
         };
 
         return (
-            <h1 style={styles}>Data Here</h1>
-            // <div>
-            //     {this.state.name === null? null : <h1>{this.state.name}</h1>}
-            //     <ImageCard id={this.props.id} />
-            //     {this.state.abilities === null? null : <AbilitiCard abilities={this.state.abilities} />}
-            //     {this.state.types === null? null : <TypeCard types={this.state.types} />}
-            //     {this.state.moves === null? null : <MoveCard moves={this.state.moves} show={this.props.showMoves}/>}
-            // </div>
+            <div style={styles}>
+                <ImageCard id={this.props.id} />
+                <div>
+                    {this.state.name === null? null :
+                         <div>
+                             <h1 style={nameNumberStyle}>{this.props.id}</h1>
+                             <h1 style={nameNumberStyle}>{this.state.name}</h1>
+                         </div>
+                    }
+                    {this.state.types === null? null : <TypeCard types={this.state.types} />}
+                    {this.state.abilities === null? null : <AbilitiCard abilities={this.state.abilities} />}
+                </div>
+                {/* {this.state.moves === null? null : <MoveCard moves={this.state.moves} show={this.props.showMoves}/>} */}
+            </div>
         );
     }
 }
