@@ -14,6 +14,7 @@ class BasicInfo extends React.Component
         abilities : null,
         moves: null,
     }
+
     componentDidMount()
     {
         axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
@@ -25,6 +26,22 @@ class BasicInfo extends React.Component
                 moves: response.data.moves
             });
         });
+    }
+
+    componentDidUpdate(prevProps, prevState)
+    {
+        if(prevProps.id !== this.props.id)
+        {
+            axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
+            .then(response => {
+                this.setState({
+                    name:response.data.name,
+                    abilities : response.data.abilities,
+                    types: response.data.types,
+                    moves: response.data.moves
+                });
+            });
+        }
     }
     render()
     {
