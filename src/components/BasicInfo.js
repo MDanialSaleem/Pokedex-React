@@ -50,23 +50,34 @@ class BasicInfo extends React.Component
             display: "flex",
             flexDirection: "row",
             justifyContent: "flex-start",
-            width: "100%"
+            alignItems: "center",
+            width: "100%",
+            background: "white"
         };
 
 
-        const nameNumberStyle = {
+        const numberStyle = {
             background: "white",
             display: "inline"
+        };
+
+        const nameStyle = {
+            background: "red",
+            display: "inline"
+        };
+
+        const internalStyle = {
+            margin: "30px"
         };
 
         return (
             <div style={styles}>
                 <ImageCard id={this.props.id} />
-                <div>
+                <div style={internalStyle}>
                     {this.state.name === null? null :
                          <div>
-                             <h1 style={nameNumberStyle}>{this.props.id}</h1>
-                             <h1 style={nameNumberStyle}>{this.state.name}</h1>
+                             <h1 style={numberStyle}>#{this.props.id}</h1>
+                             <h1 style={nameStyle}>{this.state.name}</h1>
                          </div>
                     }
                     {this.state.types === null? null : <TypeCard types={this.state.types} />}

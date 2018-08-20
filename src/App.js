@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Searchbar from "./components/Searchbar.js";
 import BasicInfo from "./components/BasicInfo.js";
-import Navbar from "./components/Navbar.js";
 import {connect} from "react-redux";
 
 class App extends Component {
@@ -21,10 +20,6 @@ class App extends Component {
       justifyContent: "center"
     };
 
-    const internalStyle = {
-      width: "100%"
-    };
-
     
     if(this.props.firstEntered)
     {
@@ -33,7 +28,7 @@ class App extends Component {
     return (
       <div style={styles} className="App">
         <Searchbar />
-        {this.props.id !== -1 ? <div style={internalStyle}><Navbar /><BasicInfo /></div>: null}
+        {this.props.id !== -1 ? <BasicInfo /> : null}
       </div>
     );
   }

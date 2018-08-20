@@ -1,26 +1,31 @@
 import React from "react";
 
+import Ability from "./Ability.js";
+
 export default function(props)
 {
     const styles = {
-        textAlign: "center",
-        background: "green"
+        display: "flex",
+        flexFlow: "row wrap",
+        background: "green",
+        alignItems: "center",
+        justifyContent: "space-between"
     };
 
-    const abilityStyle = {
-        display: "inline",
-        background: "white",
-        margin: "0px 3px"
-    };
+
 
     const headingStyle = {
-        color: "red"
+        color: "blue",
+        width: "100%"
     };
+
+
+
     props.abilities.reverse();
     return(
         <div style={styles}>
-            <h6 style={headingStyle}>Abilities</h6>
-            {props.abilities.map(abilityObj => <h3 style={abilityStyle} key={abilityObj.slot}>{abilityObj.ability.name}</h3>)}
+            <h4 style={headingStyle}>Abilities</h4>
+            {props.abilities.map(abilityObj => <Ability key={abilityObj.slot} ability={abilityObj}/>)}
         </div>
     );
 }
