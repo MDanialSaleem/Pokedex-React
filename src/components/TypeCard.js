@@ -1,20 +1,35 @@
 import React from "react";
+import Type from "./Type.js"
 
 export default function(props)
 {
     const styles = {
-        textAlign: "center"
+        display: "flex",
+        flexFlow: "row wrap",
+        background: "salmon",
+        alignItems: "center",
+        justifyContent: "space-around",
+        alignContent: "flex-start",
+        boxSizing: "border-box",
+        border: "3px solid red",
+        borderRadius: "5%"
     };
 
-    const typeStyle = {
-        display: "inline",
-        background: "white"
+
+
+    const headingStyle = {
+        color: "white",
+        width: "100%",
+        margin: "0px"
     };
-    
+
+
+
     props.types.reverse();
     return(
         <div style={styles}>
-            {props.types.map(typeObj => <h3 style={typeStyle} key={typeObj.slot}>{typeObj.type.name}</h3>)}
+            <h4 style={headingStyle}>Type</h4>
+            {props.types.map(typeObj => <Type key={typeObj.slot} type={typeObj}/>)}
         </div>
     );
 }

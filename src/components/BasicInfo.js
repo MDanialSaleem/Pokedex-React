@@ -52,7 +52,7 @@ class BasicInfo extends React.Component
             justifyContent: "flex-start",
             alignItems: "center",
             width: "100%",
-            background: "white"
+            background: "green"
         };
 
 
@@ -67,7 +67,11 @@ class BasicInfo extends React.Component
         };
 
         const internalStyle = {
-            margin: "30px"
+            margin: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            height: "250px"
         };
 
         return (

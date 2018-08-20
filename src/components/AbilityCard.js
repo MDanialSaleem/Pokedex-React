@@ -9,7 +9,7 @@ export default function(props)
         flexFlow: "row wrap",
         background: "lightblue",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignContent: "flex-start",
         boxSizing: "border-box",
         border: "3px solid blue",
