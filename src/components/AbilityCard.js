@@ -7,16 +7,21 @@ export default function(props)
     const styles = {
         display: "flex",
         flexFlow: "row wrap",
-        background: "green",
+        background: "lightblue",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignContent: "flex-start",
+        boxSizing: "border-box",
+        border: "3px solid blue",
+        borderRadius: "5%"
     };
 
 
 
     const headingStyle = {
-        color: "blue",
-        width: "100%"
+        color: "white",
+        width: "100%",
+        margin: "0px"
     };
 
 
