@@ -1,10 +1,8 @@
 import React from "react";
 
-function MoveCard(props)
+export default function(props)
 {
     return(
-        props.show ? props.moves.map((moveObj,index) => <h3 key={index}>{moveObj.move.name}</h3>) : null
+        props.moves.map((moveObj,index) => <h3 key={index}>{moveObj.move.name}</h3>)
     );
 }
-//to check git
-export default MoveCard;

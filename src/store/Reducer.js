@@ -2,8 +2,8 @@ import * as ActionTypes from "./Actions.js";
 
 const initialState = {
     nationalId : -1,
-    showMoves : false,
-    firstEntered: false
+    firstEntered: false,
+    moves: null
 };
 
 export default function reducer (state = initialState, action)
@@ -16,10 +16,10 @@ export default function reducer (state = initialState, action)
                 nationalId: action.id,
                 firstEntered: true
             };
-        case ActionTypes.SHOW_MOVES:
+        case ActionTypes.UPDATE_MOVES:
             return {
                 ...state,
-                showMoves: !state.showMoves
+                moves: action.moves
             };
         default:
             return state;

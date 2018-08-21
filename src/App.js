@@ -3,6 +3,7 @@ import './App.css';
 import Searchbar from "./components/Searchbar.js";
 import BasicInfo from "./components/BasicInfo.js";
 import {connect} from "react-redux";
+import MoveCard from "./components/MoveCard.js";
 
 class App extends Component {
 
@@ -24,11 +25,13 @@ class App extends Component {
     if(this.props.firstEntered)
     {
       styles.justifyContent = "flex-start";
+      delete styles.position;
     }
     return (
       <div style={styles} className="App">
         <Searchbar />
         {this.props.id !== -1 ? <BasicInfo /> : null}
+        {this.props.moves !== null ? <MoveCard moves={this.props.moves} />: <h1>no move</h1>}
       </div>
     );
   }
@@ -38,7 +41,8 @@ const mapStateToProps = function(state)
 {
   return {
     id: state.nationalId,
-    firstEntered: state.firstEntered
+    firstEntered: state.firstEntered,
+    moves: state.moves
   };
 }
 

@@ -1,2 +1,2 @@
 export const SUBMIT_NEW_POKEMON = "SUBMIT_NEW_POKEMON";
-export const SHOW_MOVES = "SHOW_MOVES";
+export const UPDATE_MOVES = "UPDATE_MOVES";

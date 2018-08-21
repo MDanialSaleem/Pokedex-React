@@ -2,17 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import AbilitiCard from "./AbilityCard.js";
-import MoveCard from "./MoveCard.js";
 import TypeCard from "./TypeCard.js";
 import ImageCard from "./ImageCard.js";
+import * as ActionTypes from "../store/Actions.js";
 
 class BasicInfo extends React.Component
 {
     state = {
         name : null,
         types: null,
-        abilities : null,
-        moves: null,
+        abilities : null
     }
 
     componentDidMount()
@@ -25,6 +24,7 @@ class BasicInfo extends React.Component
                 types: response.data.types,
                 moves: response.data.moves
             });
+            this.props.updateMoves(response.data.moves);
         });
     }
 
@@ -38,8 +38,8 @@ class BasicInfo extends React.Component
                     name:response.data.name,
                     abilities : response.data.abilities,
                     types: response.data.types,
-                    moves: response.data.moves
                 });
+                this.props.updateMoves(response.data.moves);
             });
         }
     }
@@ -105,10 +105,16 @@ class BasicInfo extends React.Component
 const mapStateToProps = function(state)
 {
     return {
-        id : state.nationalId,
-        showMoves: state.showMoves
+        id : state.nationalId
+    };
+};
+
+const mapDispatchToProps = function(dispatch)
+{
+    return {
+        updateMoves : (moves) => dispatch({type:ActionTypes.UPDATE_MOVES, moves})
     };
 }
 
 
-export default connect(mapStateToProps)(BasicInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(BasicInfo);
