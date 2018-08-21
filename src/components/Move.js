@@ -54,7 +54,7 @@ class Move extends React.Component
             <div style={styles}>
                 <h4 style={headingStyle}>{this.props.move.move.name}</h4>
                 <button style={buttonStyle} onClick={this.onShowDetails}>View Details</button>
-                {this.state.showDetails ? <MoveDetails url={this.props.move.move.url} onClose={this.onHideDetails}/> : null}
+                {this.state.showDetails ? <MoveDetails url={this.props.move.move.url} name={this.props.move.move.name} onClose={this.onHideDetails}/> : null}
             </div>
         );
     }

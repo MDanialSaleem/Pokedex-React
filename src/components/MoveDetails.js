@@ -27,21 +27,37 @@ class MoveDetails extends React.Component
     {
         const styles = {
             background: "white",
-            height: "500px",
             position: "fixed",
             zIndex: "1",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -50%)"
+            transform: "translate(-50%, -50%)",
+            padding: "10px",
+            border: "2px solid darkblue",
+            borderRadius: "5px",
+            //flex starts here
+            display : "flex",
+            flexDirection: "column"
         };
 
+        const attributesStyle = {
+            margin:"3px 3px",
+            border: "2px solid darkblue",
+            background: "lightblue",
+            color: "white",
+            borderRadius: "5px"
+        };
+
+        const buttonStyles = {
+            background: "red"
+        };
         return (
             <div style={styles}>
                 <button onClick={this.props.onClose}>Close</button>
-                <h1>{this.state.type}</h1>
-                <h1>{this.state.accuracy}</h1>
-                <h1>{this.state.power}</h1>
-                <h1>{this.props.url}</h1>
+                <h4 style={attributesStyle}>{this.props.name}</h4>
+                {this.state.type !== null? <h4 style={attributesStyle}>Type:{this.state.type}</h4> :null}
+                {this.state.power !== null? <h4 style={attributesStyle}>Power:{this.state.power}</h4> : null}
+                {this.state.accuracy !== null? <h4 style={attributesStyle}>Accuracy:{this.state.accuracy}</h4> : null}
             </div>
         );
     }
