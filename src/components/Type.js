@@ -16,7 +16,7 @@ export default function(props)
         boxSizing: "border-box",
         margin: "3px",
         border: "1px solid blue",
-        borderRadius: "10%",
+        borderRadius: "5px",
         padding: "3px"
     };
     return(

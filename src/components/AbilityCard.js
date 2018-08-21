@@ -13,7 +13,7 @@ export default function(props)
         alignContent: "flex-start",
         boxSizing: "border-box",
         border: "3px solid blue",
-        borderRadius: "5%"
+        borderRadius: "5px"
     };
 
 
