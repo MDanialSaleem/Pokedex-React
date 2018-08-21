@@ -12,7 +12,7 @@ export default function(props)
 
     return(
         <div style={styles}>
-            {props.moves.map((moveObj,index) => <Move key = {index} move={moveObj.move} />)}
+            {props.moves.map((moveObj,index) => <Move key = {index} move={moveObj} />)}
         </div>
     );
 }
