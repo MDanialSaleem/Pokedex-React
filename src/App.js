@@ -13,7 +13,7 @@ class App extends Component {
       background: "grey",
       height: "100%",
       width: "100%",
-      position: "fixed",
+      //position: "fixed",
       //flex starts here
       display: "flex",
       flexDirection: "column",
@@ -32,6 +32,7 @@ class App extends Component {
         <Searchbar />
         {this.props.id !== -1 ? <BasicInfo /> : null}
         {this.props.moves !== null ? <MoveCard moves={this.props.moves} />: <h1>no move</h1>}
+        {this.props.list.map(obj => <h4>{obj}</h4>)}
       </div>
     );
   }
@@ -42,7 +43,8 @@ const mapStateToProps = function(state)
   return {
     id: state.nationalId,
     firstEntered: state.firstEntered,
-    moves: state.moves
+    moves: state.moves,
+    list:state.list
   };
 }
 

@@ -1,9 +1,11 @@
 import * as ActionTypes from "./Actions.js";
+import list from "../data.js";
 
 const initialState = {
     nationalId : -1,
     firstEntered: false,
-    moves: null
+    moves: null,
+    list
 };
 
 export default function reducer (state = initialState, action)
