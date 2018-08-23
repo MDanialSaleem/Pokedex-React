@@ -4,7 +4,7 @@ import Searchbar from "./components/Searchbar.js";
 import BasicInfo from "./components/BasicInfo.js";
 import {connect} from "react-redux";
 import MoveCard from "./components/MoveCard.js";
-import Loader from "./components/Loader/Loader.js";
+import AppLoader from "./components/AppLoader.js";
 
 class App extends Component {
 
@@ -35,7 +35,7 @@ class App extends Component {
         {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
       </div>)
       :
-      <Loader />;
+      <AppLoader />;
     
   }
 }

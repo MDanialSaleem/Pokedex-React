@@ -1,5 +1,5 @@
 import React from "react";
-import './Loader.css';
+import BasicLoader from "./BasicLoader/BasicLoader.js";
 
 
 export default function(props)
@@ -17,7 +17,7 @@ export default function(props)
 
     return (
         <div style={styles}>
-            <div class="lds-circle"></div>
+            <BasicLoader />
         </div>
     );
 }
