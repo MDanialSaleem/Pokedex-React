@@ -5,12 +5,7 @@ import ImageCard from "./ImageCard.js";
 
 class BasicInfo extends React.Component
 {
-    state = {
-        id: this.props.id,
-        name : this.props.data.name,
-        types: this.props.data.types,
-        abilities : this.props.data.abilities
-    }
+
     render()
     {
         const styles = {
@@ -55,16 +50,13 @@ class BasicInfo extends React.Component
             <div style={styles}>
                 <ImageCard id={this.props.id} />
                 <div style={internalStyle}>
-                    {this.state.name === null? null :
-                         <div style = {nameNumberStyle}>
-                             <h1 style={numberStyle}>#{this.props.id}</h1>
-                             <h1 style={nameStyle}>{this.state.name}</h1>
-                         </div>
-                    }
-                    {this.state.types === null? null : <TypeCard types={this.state.types} />}
-                    {this.state.abilities === null? null : <AbilitiCard abilities={this.state.abilities} />}
+                    <div style = {nameNumberStyle}>
+                        <h1 style={numberStyle}>#{this.props.id}</h1>
+                        <h1 style={nameStyle}>{this.props.data.name}</h1>
+                    </div>
+                    <TypeCard types={this.props.data.types} />
+                    <AbilitiCard abilities={this.props.data.abilities} />
                 </div>
-                {/* {this.state.moves === null? null : <MoveCard moves={this.state.moves} show={this.props.showMoves}/>} */}
             </div>
         );
     }
