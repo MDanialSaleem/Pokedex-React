@@ -7,11 +7,11 @@ export default function(props)
         margin: "0px"
     };
 
-    const internalAbilityStyle = {
+    const abilityNameStyle = {
         margin: "0px"
     };
 
-    const abilityStyle = {
+    const styles = {
         display: "inline-block",
         boxSizing: "border-box",
         margin: "3px",
@@ -19,9 +19,10 @@ export default function(props)
         borderRadius: "5px",
         padding: "3px"
     };
+
     return(
-        <div style={abilityStyle}>
-            <h3 style={internalAbilityStyle}>{props.ability.ability.name}</h3>
+        <div style={styles}>
+            <h3 style={abilityNameStyle}>{props.ability.ability.name}</h3>
             {props.ability.is_hidden ? <h6 style={hiddenStyle}>Hidden</h6> : null}
         </div>
     );

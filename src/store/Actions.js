@@ -8,7 +8,6 @@ export const loadNewPokemon= (id) =>
         axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${id}/index.json`)
         .then(response => {
             dispatch({type:UPDATE_DATA, data:response.data, id});
-            console.log(response);
         });
     };
 };

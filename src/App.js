@@ -26,6 +26,7 @@ class App extends Component {
     if(this.props.firstEntered)
     {
       styles.justifyContent = "flex-start";
+      //this needs to be deleted to enable scrolling.
       delete styles.position;
     }
     return !this.props.loading ?

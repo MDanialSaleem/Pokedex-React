@@ -13,6 +13,7 @@ class MoveDetails extends React.Component
 
     componentDidMount()
     {
+        //for some reason, in response data links are modified to include localhost. this is a work-around for that.
         let requestURL = this.props.url.replace("http://localhost", "https://cdn.rawgit.com/Naramsim/ninjask/master/data");
         requestURL = requestURL.concat("index.json");
         axios.get(requestURL)
@@ -23,17 +24,18 @@ class MoveDetails extends React.Component
                 power: response.data.power,
                 loaded: true
             });
-            console.log(response);
         })
     }
     render()
     {
+        //the position is fixed to display it on top of others.
         const styles = {
             background: "white",
             position: "fixed",
             zIndex: "1",
             top: "50%",
             left: "50%",
+            //to center the card perfectly.
             transform: "translate(-50%, -50%)",
             padding: "10px",
             border: "2px solid darkblue",
@@ -51,12 +53,14 @@ class MoveDetails extends React.Component
             borderRadius: "5px"
         };
 
-        const buttonStyles = {
+        const buttonStyle = {
             background: "red"
         };
         return this.state.loaded ?   
+            //null checks are needed for each attribute even after using loader
+            //becuase for some moves certain attributes are missing.
             <div style={styles}>
-                <button onClick={this.props.onClose}>Close</button>
+                <button style={buttonStyle} onClick={this.props.onClose}>Close</button>
                 <h4 style={attributesStyle}>{this.props.name}</h4>
                 {this.state.type !== null? <h4 style={attributesStyle}>Type:{this.state.type}</h4> :null}
                 {this.state.power !== null? <h4 style={attributesStyle}>Power:{this.state.power}</h4> : null}

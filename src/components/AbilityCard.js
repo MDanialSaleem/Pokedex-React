@@ -25,7 +25,7 @@ export default function(props)
     };
 
 
-
+    //because otherwise hidden ability would be the first.
     props.abilities.reverse();
     return(
         <div style={styles}>

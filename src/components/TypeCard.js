@@ -23,8 +23,7 @@ export default function(props)
         margin: "0px"
     };
 
-
-
+    //for some reason, types occur in opposite order, that is primary type occurs later. this is used to fix that.
     props.types.reverse();
     return(
         <div style={styles}>

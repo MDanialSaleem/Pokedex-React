@@ -1,7 +1,7 @@
 import React from "react";
 import BasicLoader from "./BasicLoader/BasicLoader.js";
 
-
+//basically a wrapper for the normal loader that encompasses the whole screen by using positon fixed
 export default function(props)
 {
     const styles = {

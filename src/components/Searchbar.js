@@ -5,7 +5,7 @@ import * as ActionTypes from "../store/Actions.js";
 class Searchbar extends React.Component
 {
     state = {
-        currentValue : "Enter Id",
+        currentValue : "Enter pokedex number or name",
         error: false
     };
 
@@ -17,6 +17,7 @@ class Searchbar extends React.Component
         });
     };
 
+    //used for performing certain checks before calling the API.
     handleInitialSubmit(value)
     {
         var number = Number.parseInt(value,10);
@@ -41,9 +42,9 @@ class Searchbar extends React.Component
                 });
             }
         }
-        else
+        else //if a name was submitted. Number.parseInt return NaN if it can't convert the string to a valid number.
         {
-            value = value.toLowerCase();
+            value = value.toLowerCase(); //to prevent case issues.
             const index = this.props.list.findIndex(pokemon => pokemon === value);
             if(index !== -1)
             {
