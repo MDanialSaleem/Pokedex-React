@@ -50,9 +50,10 @@ class BasicInfo extends React.Component
             flexDirection: "row",
             justifyContent: "flex-start",
             alignItems: "center",
-            width: "100%",
             background: "green",
-            margin: "5px 5px"
+            margin: "5px 5px",
+            border: "5px solid green",
+            borderRadius: "10px"
         };
 
 

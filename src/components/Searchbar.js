@@ -5,7 +5,8 @@ import * as ActionTypes from "../store/Actions.js";
 class Searchbar extends React.Component
 {
     state = {
-        currentValue : "Enter Id"
+        currentValue : "Enter Id",
+        error: false
     };
 
 
@@ -16,7 +17,44 @@ class Searchbar extends React.Component
         });
     };
 
-
+    handleInitialSubmit(value)
+    {
+        var number = Number.parseInt(value,10);
+        if(!isNaN(number))
+        {
+            if(number >=1 && number <=721)
+            {
+                this.setState({
+                    error:false
+                });
+                this.props.handleSubmit(value);
+            }
+            else
+            {
+                this.setState({
+                    error:true
+                });
+            }
+        }
+        else
+        {
+            value = value.toLowerCase();
+            const index = this.props.list.findIndex(pokemon => pokemon === value);
+            if(index !== -1)
+            {
+                this.setState({
+                    error:false
+                });
+                this.props.handleSubmit(index+1);
+            }
+            else
+            {
+                this.setState({
+                    error:true
+                });
+            }
+        }
+    }
 
     render() {
         const buttonStyles = {
@@ -37,7 +75,8 @@ class Searchbar extends React.Component
         return (
             <div>
                 <input style={inputStyles} type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />
-                <button style={buttonStyles} onClick={() => this.props.handleSubmit(this.state.currentValue)}>Search</button>
+                <button style={buttonStyles} onClick={() => this.handleInitialSubmit(this.state.currentValue)}>Search</button>
+                {this.state.error ? <h4>No Such Pokemon</h4> : null}
             </div>
         );
     }
@@ -47,7 +86,8 @@ const mapStateToProps = function(state)
 {
     return {
         id : state.nationalId,
-        firstEntered: state.firstEntered
+        firstEntered: state.firstEntered,
+        list: state.list
     };
 }
 
