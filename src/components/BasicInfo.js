@@ -10,9 +10,9 @@ function BasicInfo(props)
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
-        background: "green",
+        background: "lightgray",
         margin: "5px 5px",
-        border: "5px solid green",
+        border: "5px solid black",
         borderRadius: "10px"
     };
 

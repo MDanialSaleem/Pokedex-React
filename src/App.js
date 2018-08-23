@@ -11,7 +11,7 @@ class App extends Component {
   render()
   {
     const styles = {
-      background: "grey",
+      background: "darkslategrey",
       height: "100%",
       width: "100%",
       position: "fixed",
