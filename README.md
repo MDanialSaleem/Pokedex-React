@@ -1,6 +1,7 @@
 ﻿# Project Title
 
 This is a pokdex build with react. It uses https://github.com/Naramsim/ninjask instead of the original PokeApi because the orginal has issued related to CORS.
+It is live on https://pokedex-8f711.firebaseapp.com/
 
 ## Getting Started
 
