@@ -1,6 +1,6 @@
 import axios from "axios";
 export const UPDATE_DATA = "UPDATE_DATA";
-
+export const START_LOADING = "START_LOADING";
 
 export const loadNewPokemon= (id) =>
 {

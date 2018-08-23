@@ -27,6 +27,7 @@ class Searchbar extends React.Component
                 this.setState({
                     error:false
                 });
+                this.props.startLoading();
                 this.props.loadNew(value);
             }
             else
@@ -45,6 +46,7 @@ class Searchbar extends React.Component
                 this.setState({
                     error:false
                 });
+                this.props.startLoading();
                 this.props.loadNew(index+1);
             }
             else
@@ -94,7 +96,8 @@ const mapStateToProps = function(state)
 const mapDispatchToProps = function(dispatch)
 {
     return {
-        loadNew: (id) => dispatch(ActionTypes.loadNewPokemon(id))
+        loadNew: (id) => dispatch(ActionTypes.loadNewPokemon(id)),
+        startLoading: () => dispatch({type:ActionTypes.START_LOADING})
     };
 };
 
