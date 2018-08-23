@@ -11,7 +11,8 @@ class App extends Component {
   render()
   {
     const styles = {
-      background: "darkslategrey",
+      backgroundImage: "linear-gradient(to bottom right, red, red 20%, blue 20%, blue 40%, yellow 40%, yellow 60%, green 60%, green 80%, white 80%, white 100%)",
+      backgroundAttachment: "fixed",
       height: "100%",
       width: "100%",
       position: "fixed",
