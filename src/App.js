@@ -29,11 +29,12 @@ class App extends Component {
       delete styles.position;
     }
     return (
-      <div style={styles} className="App">
-        <Searchbar />
-        {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
-        {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
-      </div>
+      // <div style={styles} className="App">
+      //   <Searchbar />
+      //   {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
+      //   {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
+      // </div>
+      <Loader />
     );
   }
 }
