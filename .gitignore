@@ -3,3 +3,6 @@ node_modules_bak/
 node_modules/
 .firebaserc
 firebase.json
+build/
+README.md
+.firebase/hosting.YnVpbGQ.cache
