@@ -27,7 +27,7 @@ class Searchbar extends React.Component
                 this.setState({
                     error:false
                 });
-                this.props.handleSubmit(value);
+                this.props.loadNew(value);
             }
             else
             {
@@ -45,7 +45,7 @@ class Searchbar extends React.Component
                 this.setState({
                     error:false
                 });
-                this.props.handleSubmit(index+1);
+                this.props.loadNew(index+1);
             }
             else
             {
@@ -93,9 +93,8 @@ const mapStateToProps = function(state)
 
 const mapDispatchToProps = function(dispatch)
 {
-
     return {
-        handleSubmit : (id) => dispatch({type:ActionTypes.SUBMIT_NEW_POKEMON, id})
+        loadNew: (id) => dispatch(ActionTypes.loadNewPokemon(id))
     };
 };
 

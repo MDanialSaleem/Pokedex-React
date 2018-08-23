@@ -4,24 +4,20 @@ import list from "../data.js";
 const initialState = {
     nationalId : -1,
     firstEntered: false,
-    moves: null,
-    list
+    list,
+    data: null
 };
 
 export default function reducer (state = initialState, action)
 {
     switch(action.type)
     {
-        case ActionTypes.SUBMIT_NEW_POKEMON:
+        case ActionTypes.UPDATE_DATA:
             return {
                 ...state,
                 nationalId: action.id,
-                firstEntered: true
-            };
-        case ActionTypes.UPDATE_MOVES:
-            return {
-                ...state,
-                moves: action.moves
+                firstEntered: true,
+                data: action.data
             };
         default:
             return state;

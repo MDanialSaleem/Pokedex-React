@@ -4,10 +4,11 @@ import './index.css';
 import App from './App.js';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducer from "./store/Reducer.js";
+import thunk from "redux-thunk";
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 const jsx = (
     <Provider store={store}> 
         <App /> 

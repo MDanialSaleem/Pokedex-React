@@ -30,10 +30,9 @@ class App extends Component {
     }
     return (
       <div style={styles} className="App">
-        {/* <Searchbar />
-        {this.props.id !== -1 ? <BasicInfo /> : null}
-        {this.props.moves !== null ? <MoveCard moves={this.props.moves} />: null} */}
-        <Loader />
+        <Searchbar />
+        {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
+        {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
       </div>
     );
   }
@@ -44,7 +43,7 @@ const mapStateToProps = function(state)
   return {
     id: state.nationalId,
     firstEntered: state.firstEntered,
-    moves: state.moves
+    data: state.data
   };
 }
 

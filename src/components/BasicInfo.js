@@ -1,47 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
-import axios from "axios";
 import AbilitiCard from "./AbilityCard.js";
 import TypeCard from "./TypeCard.js";
 import ImageCard from "./ImageCard.js";
-import * as ActionTypes from "../store/Actions.js";
 
 class BasicInfo extends React.Component
 {
     state = {
-        name : null,
-        types: null,
-        abilities : null
-    }
-
-    componentDidMount()
-    {
-        axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
-        .then(response => {
-            this.setState({
-                name:response.data.name,
-                abilities : response.data.abilities,
-                types: response.data.types,
-                moves: response.data.moves
-            });
-            this.props.updateMoves(response.data.moves);
-        });
-    }
-
-    componentDidUpdate(prevProps, prevState)
-    {
-        if(prevProps.id !== this.props.id)
-        {
-            axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${this.props.id}/index.json`)
-            .then(response => {
-                this.setState({
-                    name:response.data.name,
-                    abilities : response.data.abilities,
-                    types: response.data.types,
-                });
-                this.props.updateMoves(response.data.moves);
-            });
-        }
+        id: this.props.id,
+        name : this.props.data.name,
+        types: this.props.data.types,
+        abilities : this.props.data.abilities
     }
     render()
     {
@@ -103,19 +71,5 @@ class BasicInfo extends React.Component
 }
 
 
-const mapStateToProps = function(state)
-{
-    return {
-        id : state.nationalId
-    };
-};
 
-const mapDispatchToProps = function(dispatch)
-{
-    return {
-        updateMoves : (moves) => dispatch({type:ActionTypes.UPDATE_MOVES, moves})
-    };
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(BasicInfo);
+export default BasicInfo;
