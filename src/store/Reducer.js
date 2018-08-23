@@ -5,7 +5,8 @@ const initialState = {
     nationalId : -1,
     firstEntered: false,
     list,
-    data: null
+    data: null,
+    loading: false
 };
 
 export default function reducer (state = initialState, action)
@@ -17,7 +18,13 @@ export default function reducer (state = initialState, action)
                 ...state,
                 nationalId: action.id,
                 firstEntered: true,
-                data: action.data
+                data: action.data,
+                loading: false
+            };
+        case ActionTypes.START_LOADING:
+            return {
+                ...state,
+                loading: true
             };
         default:
             return state;

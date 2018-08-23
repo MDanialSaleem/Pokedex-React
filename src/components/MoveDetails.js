@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "../../node_modules/axios";
+import BasicLoader from "./BasicLoader/BasicLoader.js";
 
 class MoveDetails extends React.Component
 {
     state = {
         type: null,
         accuracy: null,
-        power: null
+        power: null,
+        loaded: false
     };
 
     componentDidMount()
@@ -18,7 +20,8 @@ class MoveDetails extends React.Component
             this.setState({
                 type: response.data.type.name,
                 accuracy: response.data.accuracy,
-                power: response.data.power
+                power: response.data.power,
+                loaded: true
             });
             console.log(response);
         })
@@ -51,7 +54,7 @@ class MoveDetails extends React.Component
         const buttonStyles = {
             background: "red"
         };
-        return (
+        return this.state.loaded ?   
             <div style={styles}>
                 <button onClick={this.props.onClose}>Close</button>
                 <h4 style={attributesStyle}>{this.props.name}</h4>
@@ -59,7 +62,11 @@ class MoveDetails extends React.Component
                 {this.state.power !== null? <h4 style={attributesStyle}>Power:{this.state.power}</h4> : null}
                 {this.state.accuracy !== null? <h4 style={attributesStyle}>Accuracy:{this.state.accuracy}</h4> : null}
             </div>
-        );
+            :
+            <div style={styles}>
+                <BasicLoader />
+            </div>
+
     }
 }
 

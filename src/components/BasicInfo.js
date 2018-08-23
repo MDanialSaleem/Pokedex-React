@@ -45,7 +45,7 @@ function BasicInfo(props)
 
     return (
         <div style={styles}>
-            <ImageCard id={props.id} />
+            <ImageCard id={props.id} name={props.data.name} />
             <div style={internalStyle}>
                 <div style = {nameNumberStyle}>
                     <h1 style={numberStyle}>#{props.id}</h1>
