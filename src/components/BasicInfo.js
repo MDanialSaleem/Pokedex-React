@@ -41,6 +41,7 @@ function BasicInfo(props)
     const nameNumberStyle = {
         display: "flex",
         justifyContent: "space-between",
+        width: "300px"
     };
 
     return (

@@ -5,7 +5,7 @@ import * as ActionTypes from "../store/Actions.js";
 class Searchbar extends React.Component
 {
     state = {
-        currentValue : "Enter pokedex number or name",
+        currentValue : "Enter id or name",
         error: false
     };
 
@@ -81,11 +81,11 @@ class Searchbar extends React.Component
             margin: "0px 3px",
             border: "3px solid lightblue",
             borderRadius: "10px",
-            background: "#F5FFFA"
+            background: "#F5FFFA",
         }
         return (
             <div>
-                <input style={inputStyles} type = "text" placeholder={this.props.id} onKeyUp={(event) => this.handleInput(event.target.value)} />
+                <input style={inputStyles} type = "text" placeholder={this.state.currentValue} onKeyUp={(event) => this.handleInput(event.target.value)} />
                 <button style={buttonStyles} onClick={() => this.handleInitialSubmit(this.state.currentValue)}>Search</button>
                 {this.state.error ? <h4>No Such Pokemon</h4> : null}
             </div>
