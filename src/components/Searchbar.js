@@ -27,7 +27,10 @@ class Searchbar extends React.Component
                 this.setState({
                     error:false
                 });
-                this.props.loadNew(value);
+                if(value !== this.props.id)
+                {
+                    this.props.loadNew(value);
+                }
             }
             else
             {
@@ -45,7 +48,10 @@ class Searchbar extends React.Component
                 this.setState({
                     error:false
                 });
-                this.props.loadNew(index+1);
+                if(index + 1 !== this.props.id)
+                {
+                    this.props.loadNew(index+1);
+                }
             }
             else
             {
