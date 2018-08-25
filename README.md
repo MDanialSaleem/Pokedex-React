@@ -8,6 +8,9 @@ It is live on https://pokedex-8f711.firebaseapp.com/
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 
+### Pre-Requisites
+* Have node installed.
+
 ### Installing
 
 Clone the repository and then run the following command in the project directory.

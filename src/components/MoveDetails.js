@@ -29,14 +29,22 @@ class MoveDetails extends React.Component
     render()
     {
         //the position is fixed to display it on top of others.
+        //the div covers the entire page making it impossible to click on other moves to
+        //view details of multiple moves together
         const styles = {
-            background: "white",
             position: "fixed",
             zIndex: "1",
-            top: "50%",
-            left: "50%",
-            //to center the card perfectly.
-            transform: "translate(-50%, -50%)",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        };
+
+        const internalStyles = {
+            background: "white",
             padding: "10px",
             border: "2px solid darkblue",
             borderRadius: "5px",
@@ -60,11 +68,13 @@ class MoveDetails extends React.Component
             //null checks are needed for each attribute even after using loader
             //becuase for some moves certain attributes are missing.
             <div style={styles}>
+                <div style={internalStyles}>
                 <button style={buttonStyle} onClick={this.props.onClose}>Close</button>
                 <h4 style={attributesStyle}>{this.props.name}</h4>
                 {this.state.type !== null? <h4 style={attributesStyle}>Type:{this.state.type}</h4> :null}
                 {this.state.power !== null? <h4 style={attributesStyle}>Power:{this.state.power}</h4> : null}
                 {this.state.accuracy !== null? <h4 style={attributesStyle}>Accuracy:{this.state.accuracy}</h4> : null}
+            </div>
             </div>
             :
             <div style={styles}>
