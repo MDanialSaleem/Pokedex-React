@@ -11,10 +11,13 @@ class App extends Component {
   render()
   {
     const styles = {
-      backgroundImage: "linear-gradient(to bottom right, red, red 20%, blue 20%, blue 40%, yellow 40%, yellow 60%, green 60%, green 80%, white 80%, white 100%)",
+      backgroundImage: "linear-gradient(to bottom right, red, red 20%, blue 20%, blue 40%, white 40%, white 60%, green 60%, green 80%, yellow 80%, yellow 100%)",
       backgroundAttachment: "fixed",
       height: "100%",
-      width: "100%",
+      width: "95%",
+      left: "50%",
+      top: "50%",
+      transform: "translate(-50%, -50%)",
       position: "fixed",
       //flex starts here
       display: "flex",

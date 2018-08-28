@@ -1,0 +1,17 @@
+data.abilities is array of objects. each object has following foRMATE
+	ability : { name, url }
+	is_hidden : true/false
+	slot
+
+data.name
+data.sprites : {
+		front_default: string url
+		other_spirties..
+		}
+data.types is an array
+	type: {name, url}
+	slot //later slots are secondary
+	
+data.moves is an array
+	move : {name, url}
+		
