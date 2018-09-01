@@ -11,10 +11,14 @@ class App extends Component {
   render()
   {
 
-
+    const assignedClasses = ["App"];
+    if(!this.props.firstEntered)
+    {
+      assignedClasses.push("AppHeightFull");
+    }
     
     return !this.props.loading ?
-      (<div className="AppInitial">
+      (<div className={assignedClasses.join(" ")}>
         <Searchbar />
         {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
         {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
