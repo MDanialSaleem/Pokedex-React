@@ -11,14 +11,28 @@ class App extends Component {
   render()
   {
 
-    const assignedClasses = ["App"];
-    if(!this.props.firstEntered)
+    const styles = {
+      textAlign: "center",
+      backgroundImage: "linear-gradient(to bottom right, red, red 20%, blue 20%, blue 40%, white 40%, white 60%, green 60%, green 80%, yellow 80%, yellow 100%)",
+      backgroundAttachment: "fixed", /*defines scrolling behaviour*/
+      width: "95%",
+      margin: "auto",
+      height: "100vh",
+      /*grid starts here*/
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center"
+    };
+
+    if(this.props.firstEntered)
     {
-      assignedClasses.push("AppHeightFull");
-    }
+      //this is necessary because otherwise justify content and this property combined makes page wrong.
+      delete styles.height;
+    };
     
     return !this.props.loading ?
-      (<div className={assignedClasses.join(" ")}>
+      (<div style={styles}>
         <Searchbar />
         {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
         {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
