@@ -1,19 +1,24 @@
 import React from "react";
-
 import Ability from "./Ability.js";
+import Radium from "radium";
 
-export default function(props)
+const AbilityCard = function(props)
 {
     const styles = {
         display: "flex",
-        flexFlow: "row wrap",
+        flexDirection: "row",
+        flexWrap: "wrap",
         background: "lightblue",
         alignItems: "center",
         justifyContent: "space-around",
         alignContent: "flex-start",
         boxSizing: "border-box",
         border: "3px solid blue",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        width: "100%",
+        "@media (max-width: 600px)": {
+            flexDirection: "column"
+        }
     };
 
 
@@ -34,3 +39,5 @@ export default function(props)
         </div>
     );
 }
+
+export default Radium(AbilityCard);

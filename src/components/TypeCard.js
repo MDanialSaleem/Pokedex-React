@@ -1,18 +1,24 @@
 import React from "react";
-import Type from "./Type.js"
+import Type from "./Type.js";
+import Radium from "radium";
 
-export default function(props)
+const TypeCard = function(props)
 {
     const styles = {
         display: "flex",
-        flexFlow: "row wrap",
+        flexDirection: "row",
+        flexFlow: "wrap",
         background: "salmon",
         alignItems: "center",
         justifyContent: "space-around",
         alignContent: "flex-start",
         boxSizing: "border-box",
         border: "3px solid red",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        width: "100%",
+        "@media (max-width: 600px)": {
+            flexDirection: "column"
+        }
     };
 
 
@@ -32,3 +38,5 @@ export default function(props)
         </div>
     );
 }
+
+export default Radium(TypeCard);

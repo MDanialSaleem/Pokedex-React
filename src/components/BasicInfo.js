@@ -7,19 +7,21 @@ import Radium from "radium";
 function BasicInfo(props)
 {
     const styles = {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        justifyItems: "center",
         alignItems: "center",
+        //grid ends here
         background: "lightgray",
         margin: "5px 5px",
         border: "5px solid black",
         borderRadius: "10px",
+        boxSizing: "border-box",
         "@media (max-width: 600px)": {
-            flexDirection: "column",
-            justifyContent: "center"
+            gridTemplateColumns: "1fr",
+            gridRowGap: "10px",
+            width: "90%"
         }
-
     };
 
 
@@ -37,17 +39,22 @@ function BasicInfo(props)
     };
 
     const internalStyle = {
-        margin: "30px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-        height: "250px"
+        display: "grid",
+        gridRowGap: "10px",
+        justifyItems: "center",
+        //grid ends here
+        padding: "10px"
     };
 
     const nameNumberStyle = {
         display: "flex",
-        justifyContent: "space-between",
-        width: "300px"
+        width: "300px",
+        fontSize: "2em",
+        "@media (max-width: 600px)": {
+            flexDirection: "column",
+            width: "100%",
+            justifyContent: "flex-start"
+        }
     };
 
     return (
@@ -55,8 +62,8 @@ function BasicInfo(props)
             <ImageCard id={props.id} name={props.data.name} />
             <div style={internalStyle}>
                 <div style = {nameNumberStyle}>
-                    <h1 style={numberStyle}>#{props.id}</h1>
-                    <h1 style={nameStyle}>{props.data.name}</h1>
+                    <text style={numberStyle}>#{props.id}</text>
+                    <text style={nameStyle}>{props.data.name}</text>
                 </div>
                 <TypeCard types={props.data.types} />
                 <AbilitiCard abilities={props.data.abilities} />
