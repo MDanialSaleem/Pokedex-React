@@ -1,12 +1,23 @@
 import React from "react";
 import Move from "./Move.js";
-export default function(props)
+import Radium from "radium";
+
+const MoveCard = function(props)
 {
+    const styles = {
+        width: "100%"
+    };
     const internalStyles = {
         width: "100%",
         display: "flex",
-        flexFlow: "row wrap",
-        justifyContent: "space-between"
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+        padding: "1px 3px",
+        boxSizing: "border-box",
+        "@media (max-width: 600px)": {
+            flexDirection: "column"
+        }
     };
 
     const headingStyle = {
@@ -18,11 +29,13 @@ export default function(props)
     };
 
     return(
-        <div>
+        <div style={styles}>
             <h1 style={headingStyle}>Moves</h1>
             <div style={internalStyles}>
                 {props.moves.map((moveObj,index) => <Move key = {index} move={moveObj} />)}
             </div>
         </div>
     );
-}
+};
+
+export default Radium(MoveCard);

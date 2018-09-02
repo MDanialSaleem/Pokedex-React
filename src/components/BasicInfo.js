@@ -2,6 +2,7 @@ import React from "react";
 import AbilitiCard from "./AbilityCard.js";
 import TypeCard from "./TypeCard.js";
 import ImageCard from "./ImageCard.js";
+import Radium from "radium";
 
 function BasicInfo(props)
 {
@@ -13,7 +14,12 @@ function BasicInfo(props)
         background: "lightgray",
         margin: "5px 5px",
         border: "5px solid black",
-        borderRadius: "10px"
+        borderRadius: "10px",
+        "@media (max-width: 600px)": {
+            flexDirection: "column",
+            justifyContent: "center"
+        }
+
     };
 
 
@@ -61,4 +67,4 @@ function BasicInfo(props)
 
 
 
-export default BasicInfo;
+export default Radium(BasicInfo);

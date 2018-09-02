@@ -1,5 +1,6 @@
 import React from "react";
 import MoveDetails from "./MoveDetails.js";
+import Radium from "radium";
 
 
 class Move extends React.Component
@@ -31,12 +32,14 @@ class Move extends React.Component
             justifyContent: "space-between",
             alignContent: "center",
             width: "30%",
-            margin: "1px 3px",
-            boxSizing: "border-box",
             border: "2px solid darkblue",
             background: "lightsteelblue",
             borderRadius: "5px",
-            flexGrow: 1
+            flexGrow: 1,
+            boxSizing: "border-box",
+            "@media (max-width: 600px)": {
+                width: "100%"
+            }
         };
     
         const headingStyle = {
@@ -60,4 +63,4 @@ class Move extends React.Component
     }
 }
 
-export default Move;
+export default Radium(Move);

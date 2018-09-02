@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import Searchbar from "./components/Searchbar.js";
 import BasicInfo from "./components/BasicInfo.js";
 import {connect} from "react-redux";
 import MoveCard from "./components/MoveCard.js";
 import AppLoader from "./components/AppLoader.js";
+import Radium, {StyleRoot} from "radium";
 
 class App extends Component {
 
@@ -31,14 +31,19 @@ class App extends Component {
       delete styles.height;
     };
     
-    return !this.props.loading ?
-      (<div style={styles}>
-        <Searchbar />
-        {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
-        {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
-      </div>)
-      :
-      <AppLoader />;
+    return(
+    <StyleRoot> 
+        {
+          !this.props.loading ?
+          <div style={styles}>
+            <Searchbar />
+            {this.props.data !== null ? <BasicInfo id={this.props.id} data={this.props.data}/> : null}
+            {this.props.data !== null ? <MoveCard moves={this.props.data.moves} />: null}
+          </div>
+          :
+          <AppLoader />
+        }
+      </StyleRoot>);
     
   }
 }
@@ -53,4 +58,4 @@ const mapStateToProps = function(state)
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Radium(App));
