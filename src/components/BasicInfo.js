@@ -13,7 +13,7 @@ function BasicInfo(props)
         alignItems: "center",
         //grid ends here
         background: "lightgray",
-        margin: "5px 5px",
+        padding: "5px 5px",
         border: "5px solid black",
         borderRadius: "10px",
         boxSizing: "border-box",
@@ -43,7 +43,8 @@ function BasicInfo(props)
         gridRowGap: "10px",
         justifyItems: "center",
         //grid ends here
-        padding: "10px"
+        padding: "10px",
+        width: "100%"
     };
 
     const nameNumberStyle = {
