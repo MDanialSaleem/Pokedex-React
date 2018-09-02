@@ -1,6 +1,7 @@
 import React  from "react";
 import { connect } from "react-redux";
 import * as ActionTypes from "../store/Actions.js";
+import Radium from "radium";
 
 class Searchbar extends React.Component
 {
@@ -68,23 +69,43 @@ class Searchbar extends React.Component
     }
 
     render() {
+
+        const styles = {
+            width: "90%",
+            display: "grid",
+            gridTemplateColumns: "70% 30%",
+            gridColumnGap: "5px",
+            "@media (max-width: 600px)": {
+                gridTemplateColumns: "1fr",
+                gridRowGap: "1px"
+            }
+
+        };
+
         const buttonStyles = {
-            fontSize: "30px",
-            margin: "0px 3px",
+            boxSizing: "border-box",
             border: "3px solid lightblue",
-            borderRadius: "10px"
+            borderRadius: "10px",
+            fontSize: "30px",
+            "@media (max-width: 600px)": {
+                fontSize: "15px"
+            }
         }
 
 
         const inputStyles = {
-            fontSize: "30px",
-            margin: "0px 3px",
             border: "3px solid lightblue",
+            boxSizing: "border-box",
             borderRadius: "10px",
             background: "#F5FFFA",
+            width: "100%",
+            fontSize: "30px",
+            "@media (max-width: 600px)": {
+                fontSize: "15px"
+            }
         }
         return (
-            <div>
+            <div style={styles}>
                 <input style={inputStyles} type = "text" placeholder={this.state.currentValue} onKeyUp={(event) => this.handleInput(event.target.value)} />
                 <button style={buttonStyles} onClick={() => this.handleInitialSubmit(this.state.currentValue)}>Search</button>
                 {this.state.error ? <h4>No Such Pokemon</h4> : null}
@@ -110,4 +131,4 @@ const mapDispatchToProps = function(dispatch)
     };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Searchbar);
+export default connect(mapStateToProps,mapDispatchToProps)(Radium(Searchbar));
