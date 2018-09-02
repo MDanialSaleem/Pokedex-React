@@ -18,6 +18,7 @@ class App extends Component {
       width: "95%",
       margin: "auto",
       height: "100vh",
+      padding: "5px 0px",
       /*grid starts here*/
       display: "flex",
       flexDirection: "column",
