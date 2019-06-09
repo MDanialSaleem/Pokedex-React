@@ -114,15 +114,27 @@ class Searchbar extends React.Component
     }
 }
 
+//the state mananged by redux is passed into the components as props. This function maps redux store state
+//to component's props. The input is the state stored in redux, the return value is a map of some properties
+//of that state to the props of object.
 const mapStateToProps = function(state)
 {
     return {
+        //the state object is defined in the reducer.js file. 
+        //the properties on this object are put on the props object by the connect function
         id : state.nationalId,
         firstEntered: state.firstEntered,
         list: state.list
     };
 }
 
+//the actions that can be dispatched by this component is determined by this function. This function takes 
+//an input, which is the dispatch function. Dispatch is a function defined on the store object that was created
+//by the createStore in Index.js. This function expects one arguement which is the Action object i.e an object that 
+//has the type property defined on it. It can have any other number of properties. 
+//mapDispatchToProps function returns an object that has properties that are anonymous
+//functions that call dispatch with appropriate actions. These properties are assigned as methods to the props 
+//object. This then, maps actions to properties.
 const mapDispatchToProps = function(dispatch)
 {
     return {
@@ -131,4 +143,8 @@ const mapDispatchToProps = function(dispatch)
     };
 };
 
+//Connect is used to subscribe a react component to the redux store. Connect is a function
+//which takes two functions as input that configure the piece of the state this component needs to subscribe
+//to and the actions this component needs to dispatch. Either one of these can be passed if both are not needed.
+//The connect function returns another function which take the react component and returns a HOC.
 export default connect(mapStateToProps,mapDispatchToProps)(Radium(Searchbar));

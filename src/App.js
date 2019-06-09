@@ -6,6 +6,11 @@ import MoveCard from "./components/MoveCard.js";
 import AppLoader from "./components/AppLoader.js";
 import Radium, {StyleRoot} from "radium";
 
+//Inline styles by default do not support pseudo selectors or media queries/animations. To enable pseudo-selectors
+//we just need to import Radium in whichever component that uses such selectors and wrap the export in Radium HOC.
+//However if one of the components has media queries/animations, also wrap the entire application in the StyleRoot
+//component.
+
 class App extends Component {
 
   render()
@@ -35,6 +40,9 @@ class App extends Component {
     return(
     <StyleRoot> 
         {
+          //if you do not use thi bracket here, the ternary operator (or any js code for that matter) gets
+          //treated as html(or jsx in this case). These bracket here specify that there is code inside
+          //these braces which evaluates into a react component or jsx
           !this.props.loading ?
           <div style={styles}>
             <Searchbar />
