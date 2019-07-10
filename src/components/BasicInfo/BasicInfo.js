@@ -1,6 +1,6 @@
 import React from "react";
-import AbilitiCard from "./AbilityCard.js";
-import TypeCard from "./TypeCard.js";
+import AbilityCard from "./Ability/AbilityCard";
+import TypeCard from "./Type/TypeCard";
 import ImageCard from "./ImageCard.js";
 import Radium from "radium";
 
@@ -67,7 +67,7 @@ function BasicInfo(props)
                     <text style={nameStyle}>{props.data.name}</text>
                 </div>
                 <TypeCard types={props.data.types} />
-                <AbilitiCard abilities={props.data.abilities} />
+                <AbilityCard abilities={props.data.abilities} />
             </div>
         </div>
     );

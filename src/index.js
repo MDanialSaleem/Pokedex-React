@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App.js';
+import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
 import reducer from "./store/Reducer.js"; //the reducer function. Pure redux thing. No connection with React at all.

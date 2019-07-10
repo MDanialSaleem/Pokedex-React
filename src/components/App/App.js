@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Searchbar from "./components/Searchbar.js";
-import BasicInfo from "./components/BasicInfo.js";
+import Searchbar from "../Searchbar/Searchbar"
+import BasicInfo from "../BasicInfo/BasicInfo"
 import {connect} from "react-redux";
-import MoveCard from "./components/MoveCard.js";
-import AppLoader from "./components/AppLoader.js";
+import MoveCard from "../MoveCard/MoveCard";
+import AppLoader from "../Loader/AppLoader";
 import Radium, {StyleRoot} from "radium";
 
 //Inline styles by default do not support pseudo selectors or media queries/animations. To enable pseudo-selectors

@@ -1,5 +1,5 @@
 import React from "react";
-import Move from "./Move.js";
+import Move from "./Move.js"
 import Radium from "radium";
 
 const MoveCard = function(props)

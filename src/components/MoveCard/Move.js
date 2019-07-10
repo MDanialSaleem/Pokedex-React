@@ -1,5 +1,5 @@
 import React from "react";
-import MoveDetails from "./MoveDetails.js";
+import MoveDetails from "./MoveDetails"
 import Radium from "radium";
 
 

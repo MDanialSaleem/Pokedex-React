@@ -1,6 +1,6 @@
 import React  from "react";
 import { connect } from "react-redux";
-import * as ActionTypes from "../store/Actions.js";
+import * as ActionTypes from "../../store/Actions.js";
 import Radium from "radium";
 
 class Searchbar extends React.Component

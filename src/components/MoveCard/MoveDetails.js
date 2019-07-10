@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "../../node_modules/axios";
-import BasicLoader from "./BasicLoader/BasicLoader.js";
+import axios from "axios";
+import BasicLoader from "../Loader/BasicLoader";
 
 class MoveDetails extends React.Component
 {
