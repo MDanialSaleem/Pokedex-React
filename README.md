@@ -35,7 +35,6 @@ The app will be served from localhost:3000
 * PokeApi/Ninjask- Data source.
 
 ## TO DO
-* Make the app responsive.
 * Add prediction in search box.
 * Make the serch box work with pressing enter.
 
