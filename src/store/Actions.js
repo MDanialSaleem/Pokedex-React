@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import axios from "axios";
-import dummyData from "./dummy"
+import dummyData from "./dummy";
 
 export const UPDATE_DATA = "UPDATE_DATA";
 export const START_LOADING = "START_LOADING";
@@ -14,18 +15,16 @@ export const START_LOADING = "START_LOADING";
 //     };
 // };
 
-export const loadNewPokemon = (id) => {
-
-    return {
-        type: UPDATE_DATA,
-        data: dummyData,
-        id
-    }
-}
-
+export const loadNewPokemon = id => {
+  return {
+    type: UPDATE_DATA,
+    data: dummyData,
+    id
+  };
+};
 
 //What redux provides eventually is only a centralized store for managing application wide state. This store could have
 //been manipulated directly by react components but that would have made the store state unpredictable. To solve
 //this we introduce actions and reducers.
 //React components dispatch actions. Actions are handled by reducer that changes state according to the action.
-//The change of state must be synchornous. 
+//The change of state must be synchornous.
