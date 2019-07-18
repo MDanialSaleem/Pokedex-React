@@ -1,23 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as ActionTypes from "../../store/Actions.js";
 import Radium from "radium";
+import * as ActionTypes from "../../store/Actions";
 
 class Searchbar extends React.Component {
-  state = {
-    currentValue: "Enter id or name",
-    error: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentValue: "Enter id or name",
+      error: false
+    };
 
-  handleInput = value => {
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput(value) {
     this.setState({
       currentValue: value
     });
-  };
+  }
 
   //used for performing certain checks before calling the API.
   handleInitialSubmit(value) {
-    var number = Number.parseInt(value, 10);
+    const number = Number.parseInt(value, 10);
     if (!isNaN(number)) {
       if (number >= 1 && number <= 721) {
         this.setState({
@@ -35,6 +40,7 @@ class Searchbar extends React.Component {
       }
     } //if a name was submitted. Number.parseInt return NaN if it can't convert the string to a valid number.
     else {
+      // eslint-disable-next-line no-param-reassign
       value = value.toLowerCase(); //to prevent case issues.
       const index = this.props.list.findIndex(pokemon => pokemon === value);
       if (index !== -1) {
@@ -96,6 +102,7 @@ class Searchbar extends React.Component {
           onKeyUp={event => this.handleInput(event.target.value)}
         />
         <button
+          type="button"
           style={buttonStyles}
           onClick={() => this.handleInitialSubmit(this.state.currentValue)}
         >
@@ -110,7 +117,7 @@ class Searchbar extends React.Component {
 //the state mananged by redux is passed into the components as props. This function maps redux store state
 //to component's props. The input is the state stored in redux, the return value is a map of some properties
 //of that state to the props of object.
-const mapStateToProps = function(state) {
+const mapStateToProps = state => {
   return {
     //the state object is defined in the reducer.js file.
     //the properties on this object are put on the props object by the connect function
@@ -127,7 +134,7 @@ const mapStateToProps = function(state) {
 //mapDispatchToProps function returns an object that has properties that are anonymous
 //functions that call dispatch with appropriate actions. These properties are assigned as methods to the props
 //object. This then, maps actions to properties.
-const mapDispatchToProps = function(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     loadNew: id => dispatch(ActionTypes.loadNewPokemon(id)),
     startLoading: () => dispatch({ type: ActionTypes.START_LOADING })
