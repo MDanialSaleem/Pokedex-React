@@ -28,6 +28,7 @@
         "react/prop-types" : "off",
         "react/jsx-one-expression-per-line" : "off",
         "lines-between-class-members" : "off",
-        "no-restricted-globals": ["error", "event", "fdescribe"]
+        "no-restricted-globals": ["error", "event", "fdescribe"],
+        "react/jsx-max-props-per-line": "off"
     }
 }
