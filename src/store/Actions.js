@@ -4,24 +4,24 @@ import dummyData from "./dummy"
 export const UPDATE_DATA = "UPDATE_DATA";
 export const START_LOADING = "START_LOADING";
 
-// export const loadNewPokemon= (id) =>
-// {
-//     return function(dispatch){
-//         axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${id}/index.json`)
-//         .then(response => {
-//             dispatch({type:UPDATE_DATA, data:response.data, id});
-//         });
-//     };
-// };
+export const loadNewPokemon= (id) =>
+{
+    return function(dispatch){
+        axios.get(`https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${id}/index.json`)
+        .then(response => {
+            dispatch({type:UPDATE_DATA, data:response.data, id});
+        });
+    };
+};
 
-export const loadNewPokemon = (id) => {
+// export const loadNewPokemon = (id) => {
 
-    return {
-        type: UPDATE_DATA,
-        data: dummyData,
-        id
-    }
-}
+//     return {
+//         type: UPDATE_DATA,
+//         data: dummyData,
+//         id
+//     }
+// }
 
 
 //What redux provides eventually is only a centralized store for managing application wide state. This store could have
