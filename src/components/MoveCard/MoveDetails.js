@@ -1,7 +1,5 @@
 import React from "react";
 import axios from "axios";
-import BasicLoader from "../Loader/BasicLoader";
-
 //material ui imports
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -15,13 +13,18 @@ import PowerIcon from "@material-ui/icons/FlashOn";
 import TargetIcon from "@material-ui/icons/Adjust";
 import CloseIcon from "@material-ui/icons/Close";
 
+import BasicLoader from "../Loader/BasicLoader";
+
 class MoveDetails extends React.Component {
-  state = {
-    type: null,
-    accuracy: null,
-    power: null,
-    loaded: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: null,
+      accuracy: null,
+      power: null,
+      loaded: false
+    };
+  }
 
   componentDidMount() {
     //for some reason, in response data links are modified to include localhost. this is a work-around for that.
@@ -39,6 +42,7 @@ class MoveDetails extends React.Component {
       });
     });
   }
+
   render() {
     //the position is fixed to display it on top of others.
     //the div covers the entire page making it impossible to click on other moves to
@@ -67,17 +71,15 @@ class MoveDetails extends React.Component {
           <CardContent>
             <ButtonGroup size="medium" disabled>
               <Button>{this.props.name}</Button>
-              {this.state.type !== null ? (
-                <Button>{this.state.type}</Button>
-              ) : null}
+              <Button>{this.state.type}</Button>
             </ButtonGroup>
             <div>
-              {this.state.power !== null ? (
-                <Chip label={this.state.power} icon={<PowerIcon />} />
-              ) : null}
-              {this.state.accuracy !== null ? (
-                <Chip label={this.state.accuracy} icon={<TargetIcon />} />
-              ) : null}
+            {this.state.power !== null ? (
+              <Chip label={this.state.power} icon={<PowerIcon />} />
+            ) : null}
+            {this.state.accuracy !== null ? (
+              <Chip label={this.state.accuracy} icon={<TargetIcon />} />
+            ) : null}
             </div>
           </CardContent>
         </Card>
