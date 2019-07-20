@@ -1,5 +1,4 @@
 import * as ActionTypes from "./Actions.js";
-import list from "../data.js";
 
 //a reducer is just a function that receives two inputs, the old state, and the action that has been dispatched
 //and it returns the updated state based upon the action. Reducers cannot be asynchronous which means there can
@@ -14,7 +13,6 @@ import list from "../data.js";
 const initialState = {
   nationalId: -1,
   firstEntered: false,
-  list,
   data: null,
   loading: false
 };

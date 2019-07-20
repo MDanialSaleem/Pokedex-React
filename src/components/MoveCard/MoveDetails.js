@@ -35,6 +35,7 @@ class MoveDetails extends React.Component {
     );
     requestURL = requestURL.concat("index.json");
     axios.get(requestURL).then(response => {
+      console.log(response);
       this.setState({
         type: response.data.type.name,
         accuracy: response.data.accuracy,
@@ -45,6 +46,9 @@ class MoveDetails extends React.Component {
   }
 
   render() {
+    const chipStyles = {
+      margin: "10px"
+    };
     return (
       //the position is fixed to display it on top of others.
       //the div covers the entire page making it impossible to click on other moves to
@@ -74,10 +78,18 @@ class MoveDetails extends React.Component {
               <div>
                 {/* null checks are needed for each attribute even after using loader becuase for some moves certain attributes are missing. */}
                 {this.state.power !== null ? (
-                  <Chip label={this.state.power} icon={<PowerIcon />} />
+                  <Chip
+                    style={chipStyles}
+                    label={this.state.power}
+                    icon={<PowerIcon />}
+                  />
                 ) : null}
                 {this.state.accuracy !== null ? (
-                  <Chip label={this.state.accuracy} icon={<TargetIcon />} />
+                  <Chip
+                    style={chipStyles}
+                    label={this.state.accuracy}
+                    icon={<TargetIcon />}
+                  />
                 ) : null}
               </div>
             </CardContent>
