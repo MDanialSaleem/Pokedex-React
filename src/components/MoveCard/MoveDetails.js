@@ -15,6 +15,7 @@ import TargetIcon from "@material-ui/icons/Adjust";
 import CloseIcon from "@material-ui/icons/Close";
 
 import BasicLoader from "../Loader/BasicLoader";
+import TypeToColor from "../../Util/TypeToColour";
 
 class MoveDetails extends React.Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class MoveDetails extends React.Component {
       type: null,
       accuracy: null,
       power: null,
-      loaded: false
+      loaded: false,
+      description: null
     };
   }
 
@@ -35,12 +37,12 @@ class MoveDetails extends React.Component {
     );
     requestURL = requestURL.concat("index.json");
     axios.get(requestURL).then(response => {
-      console.log(response);
       this.setState({
         type: response.data.type.name,
         accuracy: response.data.accuracy,
         power: response.data.power,
-        loaded: true
+        loaded: true,
+        description: response.data.flavor_text_entries[1].flavor_text
       });
     });
   }
@@ -49,6 +51,27 @@ class MoveDetails extends React.Component {
     const chipStyles = {
       margin: "10px"
     };
+
+    const pStyle = {
+      textAlign: "justify"
+    };
+
+    const cardStyles = {
+      maxWidth: "300px",
+      margin: "20px"
+    };
+
+    const groupStyle = {
+      width: "100%"
+    };
+
+    const colorStyles = {
+      width: "100%"
+    };
+    if (this.state.type !== null) {
+      colorStyles.background = TypeToColor(this.state.type);
+    }
+
     return (
       //the position is fixed to display it on top of others.
       //the div covers the entire page making it impossible to click on other moves to
@@ -64,17 +87,20 @@ class MoveDetails extends React.Component {
         left="0"
       >
         {this.state.loaded ? (
-          <Card>
+          <Card style={cardStyles}>
             <CardActions>
               <IconButton onClick={this.props.onClose}>
                 <CloseIcon />
               </IconButton>
             </CardActions>
             <CardContent>
-              <ButtonGroup size="medium" disabled>
+              <ButtonGroup style={groupStyle} size="medium" disabled>
                 <Button>{this.props.name}</Button>
-                <Button>{this.state.type}</Button>
+                <Button style={colorStyles}>{this.state.type}</Button>
               </ButtonGroup>
+              <p style={pStyle}>
+                {this.state.description !== null ? this.state.description : ""}
+              </p>
               <div>
                 {/* null checks are needed for each attribute even after using loader becuase for some moves certain attributes are missing. */}
                 {this.state.power !== null ? (
