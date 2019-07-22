@@ -8,7 +8,6 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Chip from "@material-ui/core/Chip";
-import Box from "@material-ui/core/Box";
 //icons
 import PowerIcon from "@material-ui/icons/FlashOn";
 import TargetIcon from "@material-ui/icons/Adjust";
@@ -72,20 +71,21 @@ class MoveDetails extends React.Component {
       colorStyles.background = TypeToColor(this.state.type);
     }
 
+    const styles = {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+      position: "fixed",
+      top: "0",
+      left: "0"
+    };
     return (
       //the position is fixed to display it on top of others.
       //the div covers the entire page making it impossible to click on other moves to
       //view details of multiple moves together
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        width="100%"
-        height="100%"
-        position="fixed"
-        top="0"
-        left="0"
-      >
+      <div style={styles}>
         {this.state.loaded ? (
           <Card style={cardStyles}>
             <CardActions>
@@ -123,7 +123,7 @@ class MoveDetails extends React.Component {
         ) : (
           <BasicLoader />
         )}
-      </Box>
+      </div>
     );
   }
 }
