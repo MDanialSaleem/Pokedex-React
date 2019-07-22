@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true
@@ -19,7 +20,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "babel"
     ],
     "rules": {
         "spaced-comment" : "off",
@@ -29,6 +31,7 @@
         "react/jsx-one-expression-per-line" : "off",
         "lines-between-class-members" : "off",
         "no-restricted-globals": ["error", "event", "fdescribe"],
-        "react/jsx-max-props-per-line": "off"
+        "react/jsx-max-props-per-line": "off",
+        "babel/semi": 1
     }
 }

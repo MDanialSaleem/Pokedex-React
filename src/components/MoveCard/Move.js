@@ -1,6 +1,6 @@
+import Radium from "radium";
 import React from "react";
 import MoveDetails from "./MoveDetails";
-import Radium from "radium";
 
 class Move extends React.Component {
   state = {
@@ -50,7 +50,7 @@ class Move extends React.Component {
     return (
       <div style={styles}>
         <h4 style={headingStyle}>{this.props.move.move.name}</h4>
-        <button style={buttonStyle} onClick={this.onShowDetails}>
+        <button type="button" style={buttonStyle} onClick={this.onShowDetails}>
           View Details
         </button>
         {this.state.showDetails ? (
