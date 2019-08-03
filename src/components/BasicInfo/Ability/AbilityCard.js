@@ -1,7 +1,9 @@
 import React from "react";
 import Radium from "radium";
 import Container from "@material-ui/core/Container";
-import Ability from "./Ability";
+import Chip from "@material-ui/core/Chip";
+
+
 
 const AbilityCard = props => {
   //because otherwise hidden ability would be the first.
@@ -9,7 +11,7 @@ const AbilityCard = props => {
   return (
     <Container maxWidth="sm">
       {props.abilities.map(abilityObj => (
-        <Ability key={abilityObj.slot} ability={abilityObj} />
+        <Chip key={abilityObj.slot} label={abilityObj.ability.name} />
       ))}
     </Container>
   );
