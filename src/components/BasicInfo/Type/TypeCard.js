@@ -6,13 +6,10 @@ const TypeCard = props => {
     display: "flex",
     flexDirection: "row",
     flexFlow: "wrap",
-    background: "salmon",
     alignItems: "center",
     justifyContent: "space-around",
     alignContent: "flex-start",
     boxSizing: "border-box",
-    border: "3px solid red",
-    borderRadius: "5px",
     width: "100%",
     "@media (max-width: 600px)": {
       flexDirection: "column"
