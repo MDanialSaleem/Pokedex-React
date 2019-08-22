@@ -14,10 +14,14 @@ class Searchbar extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleInput(value) {
-    this.setState({
-      currentValue: value
-    });
+  handleInput(eventObj) {
+    if (eventObj.keyCode === 13) {
+      this.handleInitialSubmit(this.state.currentValue);
+    } else {
+      this.setState({
+        currentValue: eventObj.target.value
+      });
+    }
   }
 
   //used for performing certain checks before calling the API.
@@ -99,7 +103,7 @@ class Searchbar extends React.Component {
           style={inputStyles}
           type="text"
           placeholder={this.state.currentValue}
-          onKeyUp={event => this.handleInput(event.target.value)}
+          onKeyUp={this.handleInput.bind(this)}
         />
         <button
           type="button"

@@ -16,35 +16,38 @@ import CloseIcon from "@material-ui/icons/Close";
 import BasicLoader from "../Loader/BasicLoader";
 import TypeToColor from "../../Util/TypeToColour";
 
+import MoveData from "./dummy";
+import Move from "./Move";
+
 class MoveDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: null,
-      accuracy: null,
-      power: null,
-      loaded: false,
-      description: null
+      type: MoveData.type.name,
+      accuracy: MoveData.accuracy,
+      power: MoveData.power,
+      loaded: true,
+      description: MoveData.flavor_text_entries[1].flavor_text
     };
   }
 
-  componentDidMount() {
-    //for some reason, in response data links are modified to include localhost. this is a work-around for that.
-    let requestURL = this.props.url.replace(
-      "http://localhost",
-      "https://cdn.rawgit.com/Naramsim/ninjask/master/data"
-    );
-    requestURL = requestURL.concat("index.json");
-    axios.get(requestURL).then(response => {
-      this.setState({
-        type: response.data.type.name,
-        accuracy: response.data.accuracy,
-        power: response.data.power,
-        loaded: true,
-        description: response.data.flavor_text_entries[1].flavor_text
-      });
-    });
-  }
+  // componentDidMount() {
+  //   //for some reason, in response data links are modified to include localhost. this is a work-around for that.
+  //   let requestURL = this.props.url.replace(
+  //     "http://localhost",
+  //     "https://cdn.rawgit.com/Naramsim/ninjask/master/data"
+  //   );
+  //   requestURL = requestURL.concat("index.json");
+  //   axios.get(requestURL).then(response => {
+  //     this.setState({
+  //       type: response.data.type.name,
+  //       accuracy: response.data.accuracy,
+  //       power: response.data.power,
+  //       loaded: true,
+  //       description: response.data.flavor_text_entries[1].flavor_text
+  //     });
+  //   });
+  // }
 
   render() {
     const chipStyles = {
