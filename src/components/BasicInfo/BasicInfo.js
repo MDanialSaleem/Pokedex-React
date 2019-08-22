@@ -10,10 +10,7 @@ const BasicInfo = props => {
     justifyItems: "center",
     alignItems: "center",
     //grid ends here
-    background: "lightgray",
     padding: "5px 5px",
-    border: "5px solid black",
-    borderRadius: "10px",
     boxSizing: "border-box",
     "@media (max-width: 600px)": {
       gridTemplateColumns: "1fr",
