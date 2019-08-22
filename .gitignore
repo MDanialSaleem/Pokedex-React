@@ -5,4 +5,6 @@ build/
 .firebase/
 .firebaserc
 firebase.json
-src/store/dummy.js
+src/components/MoveCard/dummy.js
+src/context/Global/dummy.js 
+

@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useReducer } from "react";
+import axios from "axios";
 import cloneDeep from "lodash.clonedeep";
 import GlobalContext from "./globalContext";
-import globalReducer from "./globalReducer";
+import GlobalReducer from "./globalReducer";
 import * as ACTIONS from "./globalActons";
 import dummy from "./dummy";
+import { baseUrl, pokemonBaseUrl } from "../../Util/constants";
 
 const GithubState = props => {
   const initialState = {
@@ -13,41 +16,25 @@ const GithubState = props => {
     loading: false
   };
 
-  const [state, dispatch] = useReducer(globalReducer, initialState);
+  const [state, dispatch] = useReducer(GlobalReducer, initialState);
 
-  // Search Users
-  // const searchUsers = async text => {
-  //   setLoading();
+  const loadNewPokemon = async id => {
+    try {
+      const response = await axios.get(`${baseUrl}${pokemonBaseUrl}${id}`);
+      dispatch({ type: ACTIONS.UPDATE_DATA, data: response.data, id });
+    } catch (error) {
+      throw new Error("A server error occured. Please try again");
+    }
+  };
 
-  //   const res = await axios.get(
-  //     `https://api.github.com/search/users?q=${text}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
-  //   );
-
+  //this is here for development.
+  // const loadNewPokemon = id => {
   //   dispatch({
-  //     type: SEARCH_USERS,
-  //     payload: res.data.items
+  //     type: ACTIONS.UPDATE_DATA,
+  //     data: dummy,
+  //     id
   //   });
   // };
-
-  // export const loadNewPokemon = id => {
-  //   return function(dispatch) {
-  //     axios
-  //       .get(
-  //         `https://cdn.rawgit.com/Naramsim/ninjask/master/data/api/v2/pokemon/${id}/index.json`
-  //       )
-  //       .then(response => {
-  //         dispatch({ type: UPDATE_DATA, data: response.data, id });
-  //       });
-  //   };
-  // };
-
-  const loadNewPokemon = id => {
-    dispatch({
-      type: ACTIONS.UPDATE_DATA,
-      data: dummy,
-      id
-    });
-  };
 
   // const loading = () => {
   //   dispatch({ type: ACTIONS.START_LOADING });

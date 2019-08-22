@@ -16,6 +16,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import BasicLoader from "../Loader/BasicLoader";
 import TypeToColor from "../../Util/TypeToColour";
 
+import { baseUrl } from "../../Util/constants";
+
 // import MoveData from "./dummy";
 
 const MoveDetails = props => {
@@ -26,14 +28,20 @@ const MoveDetails = props => {
   const [description, setDescription] = React.useState(null);
 
   React.useEffect(() => {
-    const requestURL = "https://pokeapi.co/api/v2/move/144/";
-    axios.get(requestURL).then(response => {
-      setType(response.data.type.name);
-      setAccuracy(response.data.accuracy);
-      setPower(response.data.power);
-      setLoaded(true);
-      setDescription(response.data.flavor_text_entries[1].flavor_text);
-    });
+    //because the use effect callback has to be synchronous.
+    const getMove = async () => {
+      try {
+        const response = await axios.get(props.url);
+        setType(response.data.type.name);
+        setAccuracy(response.data.accuracy);
+        setPower(response.data.power);
+        setLoaded(true);
+        setDescription(response.data.flavor_text_entries[2].flavor_text);
+      } catch (error) {
+        throw new Error("A server error occured. Please try late");
+      }
+    };
+    getMove();
   }, []);
 
   const chipStyles = {
