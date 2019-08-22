@@ -1,6 +1,6 @@
 import React from "react";
 
-function ImageCard(props) {
+const ImageCard = props => {
   const imageStyles = {
     display: "block",
     border: "20px solid yellow",
@@ -17,6 +17,6 @@ function ImageCard(props) {
       }
     />
   );
-}
+};
 
 export default ImageCard;

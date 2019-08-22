@@ -2,8 +2,6 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import Chip from "@material-ui/core/Chip";
 
-
-
 const AbilityCard = props => {
   //because otherwise hidden ability would be the first.
   props.abilities.reverse();

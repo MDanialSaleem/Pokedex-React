@@ -16,119 +16,98 @@ import CloseIcon from "@material-ui/icons/Close";
 import BasicLoader from "../Loader/BasicLoader";
 import TypeToColor from "../../Util/TypeToColour";
 
-import MoveData from "./dummy";
-import Move from "./Move";
+// import MoveData from "./dummy";
 
-class MoveDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: MoveData.type.name,
-      accuracy: MoveData.accuracy,
-      power: MoveData.power,
-      loaded: true,
-      description: MoveData.flavor_text_entries[1].flavor_text
-    };
+const MoveDetails = props => {
+  const [type, setType] = React.useState(null);
+  const [accuracy, setAccuracy] = React.useState(null);
+  const [power, setPower] = React.useState(null);
+  const [loaded, setLoaded] = React.useState(false);
+  const [description, setDescription] = React.useState(null);
+
+  React.useEffect(() => {
+    const requestURL = "https://pokeapi.co/api/v2/move/144/";
+    axios.get(requestURL).then(response => {
+      setType(response.data.type.name);
+      setAccuracy(response.data.accuracy);
+      setPower(response.data.power);
+      setLoaded(true);
+      setDescription(response.data.flavor_text_entries[1].flavor_text);
+    });
+  }, []);
+
+  const chipStyles = {
+    margin: "10px"
+  };
+
+  const pStyle = {
+    textAlign: "justify"
+  };
+
+  const cardStyles = {
+    maxWidth: "300px",
+    margin: "20px"
+  };
+
+  const groupStyle = {
+    width: "100%"
+  };
+
+  const colorStyles = {
+    width: "100%"
+  };
+  if (type !== null) {
+    colorStyles.background = TypeToColor(type);
   }
 
-  // componentDidMount() {
-  //   //for some reason, in response data links are modified to include localhost. this is a work-around for that.
-  //   let requestURL = this.props.url.replace(
-  //     "http://localhost",
-  //     "https://cdn.rawgit.com/Naramsim/ninjask/master/data"
-  //   );
-  //   requestURL = requestURL.concat("index.json");
-  //   axios.get(requestURL).then(response => {
-  //     this.setState({
-  //       type: response.data.type.name,
-  //       accuracy: response.data.accuracy,
-  //       power: response.data.power,
-  //       loaded: true,
-  //       description: response.data.flavor_text_entries[1].flavor_text
-  //     });
-  //   });
-  // }
-
-  render() {
-    const chipStyles = {
-      margin: "10px"
-    };
-
-    const pStyle = {
-      textAlign: "justify"
-    };
-
-    const cardStyles = {
-      maxWidth: "300px",
-      margin: "20px"
-    };
-
-    const groupStyle = {
-      width: "100%"
-    };
-
-    const colorStyles = {
-      width: "100%"
-    };
-    if (this.state.type !== null) {
-      colorStyles.background = TypeToColor(this.state.type);
-    }
-
-    const styles = {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      height: "100%",
-      position: "fixed",
-      top: "0",
-      left: "0"
-    };
-    return (
-      //the position is fixed to display it on top of others.
-      //the div covers the entire page making it impossible to click on other moves to
-      //view details of multiple moves together
-      <div style={styles}>
-        {this.state.loaded ? (
-          <Card style={cardStyles}>
-            <CardActions>
-              <IconButton onClick={this.props.onClose}>
-                <CloseIcon />
-              </IconButton>
-            </CardActions>
-            <CardContent>
-              <ButtonGroup style={groupStyle} size="medium" disabled>
-                <Button>{this.props.name}</Button>
-                <Button style={colorStyles}>{this.state.type}</Button>
-              </ButtonGroup>
-              <p style={pStyle}>
-                {this.state.description !== null ? this.state.description : ""}
-              </p>
-              <div>
-                {/* null checks are needed for each attribute even after using loader becuase for some moves certain attributes are missing. */}
-                {this.state.power !== null ? (
-                  <Chip
-                    style={chipStyles}
-                    label={this.state.power}
-                    icon={<PowerIcon />}
-                  />
-                ) : null}
-                {this.state.accuracy !== null ? (
-                  <Chip
-                    style={chipStyles}
-                    label={this.state.accuracy}
-                    icon={<TargetIcon />}
-                  />
-                ) : null}
-              </div>
-            </CardContent>
-          </Card>
-        ) : (
-          <BasicLoader />
-        )}
-      </div>
-    );
-  }
-}
+  const styles = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    position: "fixed",
+    top: "0",
+    left: "0"
+  };
+  return (
+    //the position is fixed to display it on top of others.
+    //the div covers the entire page making it impossible to click on other moves to
+    //view details of multiple moves together
+    <div style={styles}>
+      {loaded ? (
+        <Card style={cardStyles}>
+          <CardActions>
+            <IconButton onClick={props.onClose}>
+              <CloseIcon />
+            </IconButton>
+          </CardActions>
+          <CardContent>
+            <ButtonGroup style={groupStyle} size="medium" disabled>
+              <Button>{props.name}</Button>
+              <Button style={colorStyles}>{type}</Button>
+            </ButtonGroup>
+            <p style={pStyle}>{description !== null ? description : ""}</p>
+            <div>
+              {/* null checks are needed for each attribute even after using loader becuase for some moves certain attributes are missing. */}
+              {power !== null ? (
+                <Chip style={chipStyles} label={power} icon={<PowerIcon />} />
+              ) : null}
+              {accuracy !== null ? (
+                <Chip
+                  style={chipStyles}
+                  label={accuracy}
+                  icon={<TargetIcon />}
+                />
+              ) : null}
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <BasicLoader />
+      )}
+    </div>
+  );
+};
 
 export default MoveDetails;

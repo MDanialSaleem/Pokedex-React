@@ -3,7 +3,7 @@ import AbilityCard from "./Ability/AbilityCard";
 import TypeCard from "./Type/TypeCard";
 import ImageCard from "./ImageCard";
 
-function BasicInfo(props) {
+const BasicInfo = props => {
   const styles = {
     display: "grid",
     gridTemplateColumns: "repeat(2, 1fr)",
@@ -68,6 +68,6 @@ function BasicInfo(props) {
       </div>
     </div>
   );
-}
+};
 
 export default BasicInfo;
