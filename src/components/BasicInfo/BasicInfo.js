@@ -1,5 +1,4 @@
 import React from "react";
-import Radium from "radium";
 import AbilityCard from "./Ability/AbilityCard";
 import TypeCard from "./Type/TypeCard";
 import ImageCard from "./ImageCard";
@@ -71,4 +70,4 @@ function BasicInfo(props) {
   );
 }
 
-export default Radium(BasicInfo);
+export default BasicInfo;

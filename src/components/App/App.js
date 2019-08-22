@@ -1,18 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
-import Radium, { StyleRoot } from "radium";
 import Searchbar from "../Searchbar/Searchbar";
 import BasicInfo from "../BasicInfo/BasicInfo";
-
 import MoveCard from "../MoveCard/MoveCard";
 import AppLoader from "../Loader/AppLoader";
+import GlobalContext from "../../context/Global/globalContext";
 
-//Inline styles by default do not support pseudo selectors or media queries/animations. To enable pseudo-selectors
-//we just need to import Radium in whichever component that uses such selectors and wrap the export in Radium HOC.
-//However if one of the components has media queries/animations, also wrap the entire application in the StyleRoot
-//component.
-
-const App = props => {
+const App = () => {
+  const globalContext = React.useContext(GlobalContext);
   const styles = {
     textAlign: "center",
     backgroundImage:
@@ -29,38 +23,34 @@ const App = props => {
     justifyContent: "center"
   };
 
-  if (props.firstEntered) {
+  if (globalContext.firstEntered) {
     //this is necessary because otherwise justify content and this property combined makes page wrong.
     delete styles.height;
   }
 
   return (
-    <StyleRoot>
+    <>
       {//if you do not use thi bracket here, the ternary operator (or any js code for that matter) gets
       //treated as html(or jsx in this case). These bracket here specify that there is code inside
       //these braces which evaluates into a react component or jsx
-      !props.loading ? (
+      !globalContext.loading ? (
         <div style={styles}>
           <Searchbar />
-          {props.data !== null ? (
-            <BasicInfo id={props.id} data={props.data} />
+          {globalContext.data !== null ? (
+            <BasicInfo
+              id={globalContext.nationalId}
+              data={globalContext.data}
+            />
           ) : null}
-          {props.data !== null ? <MoveCard moves={props.data.moves} /> : null}
+          {globalContext.data !== null ? (
+            <MoveCard moves={globalContext.data.moves} />
+          ) : null}
         </div>
       ) : (
         <AppLoader />
       )}
-    </StyleRoot>
+    </>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    id: state.nationalId,
-    firstEntered: state.firstEntered,
-    data: state.data,
-    loading: state.loading
-  };
-};
-
-export default connect(mapStateToProps)(Radium(App));
+export default App;

@@ -1,7 +1,5 @@
 import React from "react";
-import Radium from "radium";
 import Type from "./Type";
-
 
 const TypeCard = props => {
   const styles = {
@@ -39,4 +37,4 @@ const TypeCard = props => {
   );
 };
 
-export default Radium(TypeCard);
+export default TypeCard;

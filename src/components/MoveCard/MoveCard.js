@@ -1,5 +1,4 @@
 import React from "react";
-import Radium from "radium";
 import Move from "./Move.js";
 
 const MoveCard = props => {
@@ -38,4 +37,4 @@ const MoveCard = props => {
   );
 };
 
-export default Radium(MoveCard);
+export default MoveCard;

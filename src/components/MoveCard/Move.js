@@ -1,4 +1,3 @@
-import Radium from "radium";
 import React from "react";
 import MoveDetails from "./MoveDetails";
 
@@ -65,4 +64,4 @@ class Move extends React.Component {
   }
 }
 
-export default Radium(Move);
+export default Move;

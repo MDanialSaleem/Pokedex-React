@@ -1,5 +1,4 @@
 import React from "react";
-import Radium from "radium";
 import Container from "@material-ui/core/Container";
 import Chip from "@material-ui/core/Chip";
 
@@ -17,4 +16,4 @@ const AbilityCard = props => {
   );
 };
 
-export default Radium(AbilityCard);
+export default AbilityCard;
