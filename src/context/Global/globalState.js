@@ -18,28 +18,28 @@ const GithubState = props => {
 
   const [state, dispatch] = useReducer(GlobalReducer, initialState);
 
-  // const setLoading = () => {
-  //   dispatch({ type: ACTIONS.START_LOADING });
-  // };
+  const setLoading = () => {
+    dispatch({ type: ACTIONS.START_LOADING });
+  };
 
-  // const loadNewPokemon = async id => {
-  //   try {
-  //     setLoading();
-  //     const response = await axios.get(`${baseUrl}${pokemonBaseUrl}${id}`);
-  //     dispatch({ type: ACTIONS.UPDATE_DATA, data: response.data, id });
-  //   } catch (error) {
-  //     throw new Error("A server error occured. Please try again");
-  //   }
-  // };
+  const loadNewPokemon = async id => {
+    try {
+      setLoading();
+      const response = await axios.get(`${baseUrl}${pokemonBaseUrl}${id}`);
+      dispatch({ type: ACTIONS.UPDATE_DATA, data: response.data, id });
+    } catch (error) {
+      throw new Error("A server error occured. Please try again");
+    }
+  };
 
   //this is here for development.
-  const loadNewPokemon = id => {
-    dispatch({
-      type: ACTIONS.UPDATE_DATA,
-      data: dummy,
-      id
-    });
-  };
+  // const loadNewPokemon = id => {
+  //   dispatch({
+  //     type: ACTIONS.UPDATE_DATA,
+  //     data: dummy,
+  //     id
+  //   });
+  // };
   return (
     <GlobalContext.Provider
       value={{

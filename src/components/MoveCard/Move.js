@@ -1,5 +1,6 @@
 import React from "react";
 import MoveDetails from "./MoveDetails";
+import Button from "../SharedComponents/Button";
 
 const Move = props => {
   const [showDetails, setShowDetails] = React.useState(false);
@@ -24,22 +25,21 @@ const Move = props => {
   };
 
   const headingStyle = {
-    margin: "0px 3px"
+    margin: "auto",
+    color: "white"
   };
 
   const buttonStyle = {
-    background: "blue",
-    margin: "3px 3px",
-    borderRadius: "5px",
-    border: "1px solid darkblue"
+    width: "content",
+    margin: "5px"
   };
 
   return (
     <div style={styles}>
       <h4 style={headingStyle}>{props.move.move.name}</h4>
-      <button type="button" style={buttonStyle} onClick={onShowDetails}>
+      <Button sz="sm" onClick={onShowDetails} style={buttonStyle}>
         View Details
-      </button>
+      </Button>
       {showDetails ? (
         <MoveDetails
           url={props.move.move.url}

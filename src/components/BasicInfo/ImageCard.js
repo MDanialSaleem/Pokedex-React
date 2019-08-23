@@ -12,9 +12,8 @@ const ImageCard = props => {
   return (
     <img
       style={imageStyles}
-      /*src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.id}.png`}*/ alt={
-        props.name
-      }
+      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.id}.png`}
+      alt={props.name}
     />
   );
 };

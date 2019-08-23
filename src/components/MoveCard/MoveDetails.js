@@ -16,7 +16,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import BasicLoader from "../Loader/BasicLoader";
 import TypeToColor from "../../Util/TypeToColour";
 
-import { baseUrl } from "../../Util/constants";
 
 // import MoveData from "./dummy";
 
