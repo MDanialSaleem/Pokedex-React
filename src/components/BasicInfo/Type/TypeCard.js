@@ -17,7 +17,6 @@ const TypeCard = props => {
   };
 
   const headingStyle = {
-    color: "white",
     width: "100%",
     margin: "0px"
   };

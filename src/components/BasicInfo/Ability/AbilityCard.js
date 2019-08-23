@@ -19,14 +19,15 @@ const AbilityCard = props => {
   };
 
   const headingStyle = {
-    color: "white",
     width: "100%",
     margin: "0px"
   };
 
   const chipStyle = {
     margin: "5px",
-    borderRadius: "500px" //large value for capsule shape.
+    borderRadius: "500px", //large value for capsule shape.
+    color: "black",
+    backgroundColor: "white"
   };
 
   return (

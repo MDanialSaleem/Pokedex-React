@@ -1,18 +1,16 @@
 import React from "react";
-import green from "@material-ui/core/colors/green";
 import Searchbar from "../Searchbar/Searchbar";
 import BasicInfo from "../BasicInfo/BasicInfo";
 import MoveCard from "../MoveCard/MoveCard";
 import AppLoader from "../Loader/AppLoader";
 import GlobalContext from "../../context/Global/globalContext";
+import BackgroundImage from "../../Assets/background.png";
 
 const App = () => {
   const globalContext = React.useContext(GlobalContext);
   const styles = {
     textAlign: "center",
-    backgroundImage: `linear-gradient(to bottom right, red, red 20%, blue 20%, blue 40%, ${
-      green[400]
-    } 40%, ${green[400]} 60%, green 60%, green 80%, yellow 80%, yellow 100%)`,
+    backgroundImage: `url(${BackgroundImage})`,
     backgroundAttachment: "fixed" /*defines scrolling behaviour*/,
     width: "95%",
     margin: "auto",
