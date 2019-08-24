@@ -2,6 +2,7 @@ import React from "react";
 import AbilityCard from "./Ability/AbilityCard";
 import TypeCard from "./Type/TypeCard";
 import ImageCard from "./ImageCard";
+import Stats from "./Stats";
 
 const BasicInfo = props => {
   const styles = {
@@ -60,6 +61,7 @@ const BasicInfo = props => {
           <text style={numberStyle}>#{props.id}</text>
           <text style={nameStyle}>{props.data.name}</text>
         </div>
+        <Stats stats={props.data.stats} />
         <TypeCard types={props.data.types} />
         <AbilityCard abilities={props.data.abilities} />
       </div>

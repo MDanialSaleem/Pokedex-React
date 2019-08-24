@@ -6,5 +6,5 @@ build/
 .firebaserc
 firebase.json
 src/components/MoveCard/dummy.js
-src/context/Global/dummy.js 
+ src/context/Global/dummy.js
 
