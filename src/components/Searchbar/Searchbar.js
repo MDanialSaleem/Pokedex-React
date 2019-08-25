@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "react-grid-system";
 import GlobalContext from "../../context/Global/globalContext";
 
 const Searchbar = () => {
@@ -43,25 +44,13 @@ const Searchbar = () => {
       setCurrentValue(eventObj.target.value);
     }
   };
-  const styles = {
-    width: "90%",
-    display: "grid",
-    gridTemplateColumns: "70% 30%",
-    gridColumnGap: "5px",
-    "@media (max-width: 600px)": {
-      gridTemplateColumns: "1fr",
-      gridRowGap: "1px"
-    }
-  };
 
   const buttonStyles = {
     boxSizing: "border-box",
     border: "3px solid lightblue",
     borderRadius: "10px",
     fontSize: "30px",
-    "@media (max-width: 600px)": {
-      fontSize: "15px"
-    }
+    width: "100%"
   };
 
   const inputStyles = {
@@ -69,29 +58,32 @@ const Searchbar = () => {
     boxSizing: "border-box",
     borderRadius: "10px",
     background: "#F5FFFA",
-    width: "100%",
     fontSize: "30px",
-    "@media (max-width: 600px)": {
-      fontSize: "15px"
-    }
+    width: "100%"
   };
   return (
-    <div style={styles}>
-      <input
-        style={inputStyles}
-        type="text"
-        placeholder={currentValue}
-        onKeyUp={handleInput}
-      />
-      <button
-        type="button"
-        style={buttonStyles}
-        onClick={() => handleInitialSubmit(currentValue)}
-      >
-        Search
-      </button>
-      {error ? <h4>No Such Pokemon</h4> : null}
-    </div>
+    <>
+      <Row>
+        <Col sm={8}>
+          <input
+            style={inputStyles}
+            type="text"
+            placeholder={currentValue}
+            onKeyUp={handleInput}
+          />
+        </Col>
+        <Col sm={4}>
+          <button
+            type="button"
+            style={buttonStyles}
+            onClick={() => handleInitialSubmit(currentValue)}
+          >
+            Search
+          </button>
+        </Col>
+      </Row>
+      <Row>{error ? <h4>No Such Pokemon</h4> : null}</Row>
+    </>
   );
 };
 export default Searchbar;

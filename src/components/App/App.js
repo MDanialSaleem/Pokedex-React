@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-grid-system";
+import { Container } from "react-grid-system";
 import Searchbar from "../Searchbar/Searchbar";
 import BasicInfo from "../BasicInfo/BasicInfo";
 import MoveCard from "../MoveCard/MoveCard";
@@ -10,13 +10,9 @@ import BackgroundImage from "../../Assets/background.png";
 const App = () => {
   const globalContext = React.useContext(GlobalContext);
   const styles = {
-    textAlign: "center",
     backgroundImage: `url(${BackgroundImage})`,
     backgroundAttachment: "fixed" /*defines scrolling behaviour*/,
-    width: "95%",
-    margin: "auto",
-    height: "100vh",
-    padding: "5px 0px"
+    height: "100vh"
   };
 
   if (globalContext.firstEntered) {
@@ -32,21 +28,15 @@ const App = () => {
       !globalContext.loading ? (
         <div style={styles}>
           <Container>
-            <Row>
-              <Searchbar />
-            </Row>
+            <Searchbar />
             {globalContext.data !== null ? (
-              <Row>
-                <BasicInfo
-                  id={globalContext.nationalId}
-                  data={globalContext.data}
-                />
-              </Row>
+              <BasicInfo
+                id={globalContext.nationalId}
+                data={globalContext.data}
+              />
             ) : null}
             {globalContext.data !== null ? (
-              <Row>
-                <MoveCard moves={globalContext.data.moves} />
-              </Row>
+              <MoveCard moves={globalContext.data.moves} />
             ) : null}
           </Container>
         </div>

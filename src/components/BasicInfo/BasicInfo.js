@@ -7,31 +7,37 @@ import Stats from "./Stats";
 
 const BasicInfo = props => {
   const numberStyle = {
+    fontSize: "32px",
     background: "black",
     color: "white"
   };
 
   const nameStyle = {
-    background: "white"
+    background: "white",
+    fontSize: "32px"
   };
 
   return (
-    <>
+    <Row>
       <Col sm={6}>
-        <div>
+        <Row justify="center" style={{ marginBottom: "10px" }}>
           <text style={numberStyle}>#{props.id}</text>
           <text style={nameStyle}>{props.data.name}</text>
-        </div>
-        <ImageCard id={props.id} name={props.data.name} />
-        <TypeCard types={props.data.types} />
-        <AbilityCard abilities={props.data.abilities} />
+        </Row>
+        <Row justify="center">
+          <ImageCard id={props.id} name={props.data.name} />
+        </Row>
+        <Row justify="center">
+          <TypeCard types={props.data.types} />
+        </Row>
+        <Row justify="center">
+          <AbilityCard abilities={props.data.abilities} />
+        </Row>
       </Col>
       <Col sm={6}>
-        <div>
-          <Stats stats={props.data.stats} />
-        </div>
+        <Stats stats={props.data.stats} />
       </Col>
-    </>
+    </Row>
   );
 };
 
