@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col } from "react-grid-system";
 import Searchbar from "../Searchbar/Searchbar";
 import BasicInfo from "../BasicInfo/BasicInfo";
 import MoveCard from "../MoveCard/MoveCard";
@@ -15,12 +16,7 @@ const App = () => {
     width: "95%",
     margin: "auto",
     height: "100vh",
-    padding: "5px 0px",
-    /*grid starts here*/
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
+    padding: "5px 0px"
   };
 
   if (globalContext.firstEntered) {
@@ -35,16 +31,24 @@ const App = () => {
       //these braces which evaluates into a react component or jsx
       !globalContext.loading ? (
         <div style={styles}>
-          <Searchbar />
-          {globalContext.data !== null ? (
-            <BasicInfo
-              id={globalContext.nationalId}
-              data={globalContext.data}
-            />
-          ) : null}
-          {globalContext.data !== null ? (
-            <MoveCard moves={globalContext.data.moves} />
-          ) : null}
+          <Container>
+            <Row>
+              <Searchbar />
+            </Row>
+            {globalContext.data !== null ? (
+              <Row>
+                <BasicInfo
+                  id={globalContext.nationalId}
+                  data={globalContext.data}
+                />
+              </Row>
+            ) : null}
+            {globalContext.data !== null ? (
+              <Row>
+                <MoveCard moves={globalContext.data.moves} />
+              </Row>
+            ) : null}
+          </Container>
         </div>
       ) : (
         <AppLoader />

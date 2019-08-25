@@ -1,71 +1,37 @@
 import React from "react";
+import { Container, Row, Col } from "react-grid-system";
 import AbilityCard from "./Ability/AbilityCard";
 import TypeCard from "./Type/TypeCard";
 import ImageCard from "./ImageCard";
 import Stats from "./Stats";
 
 const BasicInfo = props => {
-  const styles = {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    justifyItems: "center",
-    alignItems: "center",
-    //grid ends here
-    padding: "5px 5px",
-    boxSizing: "border-box",
-    "@media (max-width: 600px)": {
-      gridTemplateColumns: "1fr",
-      gridRowGap: "10px",
-      width: "90%"
-    }
-  };
-
   const numberStyle = {
     background: "black",
-    color: "white",
-    display: "inline",
-    flexGrow: 1
+    color: "white"
   };
 
   const nameStyle = {
-    background: "white",
-    display: "inline",
-    flexGrow: 1
-  };
-
-  const internalStyle = {
-    display: "grid",
-    gridRowGap: "10px",
-    justifyItems: "center",
-    //grid ends here
-    padding: "10px",
-    width: "100%"
-  };
-
-  const nameNumberStyle = {
-    display: "flex",
-    width: "300px",
-    fontSize: "2em",
-    "@media (max-width: 600px)": {
-      flexDirection: "column",
-      width: "100%",
-      justifyContent: "flex-start"
-    }
+    background: "white"
   };
 
   return (
-    <div style={styles}>
-      <ImageCard id={props.id} name={props.data.name} />
-      <div style={internalStyle}>
-        <div style={nameNumberStyle}>
+    <>
+      <Col sm={6}>
+        <div>
           <text style={numberStyle}>#{props.id}</text>
           <text style={nameStyle}>{props.data.name}</text>
         </div>
-        <Stats stats={props.data.stats} />
+        <ImageCard id={props.id} name={props.data.name} />
         <TypeCard types={props.data.types} />
         <AbilityCard abilities={props.data.abilities} />
-      </div>
-    </div>
+      </Col>
+      <Col sm={6}>
+        <div>
+          <Stats stats={props.data.stats} />
+        </div>
+      </Col>
+    </>
   );
 };
 

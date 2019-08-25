@@ -10,6 +10,7 @@ export default props => {
           label={stat.stat.name}
           end={500}
           progress={stat.base_stat * 2 + 204}
+          time={10}
         />
       ))}
     </div>

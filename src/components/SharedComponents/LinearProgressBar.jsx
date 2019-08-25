@@ -30,7 +30,9 @@ const LinearProgressBar = props => {
     padding: "3px",
     fontSize: props.fontSize,
     maxWidth: `${progress}%`,
-    color: props.textColor
+    color: props.textColor,
+    overflow: "hidden",
+    whiteSpace: "nowrap"
   };
   return (
     <div css={outerStyles}>
