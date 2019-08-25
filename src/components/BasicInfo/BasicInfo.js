@@ -19,7 +19,7 @@ const BasicInfo = props => {
 
   return (
     <Row>
-      <Col sm={6}>
+      <Col md={6}>
         <Row justify="center" style={{ marginBottom: "10px" }}>
           <text style={numberStyle}>#{props.id}</text>
           <text style={nameStyle}>{props.data.name}</text>
@@ -34,7 +34,7 @@ const BasicInfo = props => {
           <AbilityCard abilities={props.data.abilities} />
         </Row>
       </Col>
-      <Col sm={6}>
+      <Col md={6}>
         <Stats stats={props.data.stats} />
       </Col>
     </Row>

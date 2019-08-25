@@ -16,7 +16,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import BasicLoader from "../Loader/BasicLoader";
 import TypeToColor from "../../Util/TypeToColour";
 
-
 // import MoveData from "./dummy";
 
 const MoveDetails = props => {
@@ -75,7 +74,8 @@ const MoveDetails = props => {
     height: "100%",
     position: "fixed",
     top: "0",
-    left: "0"
+    left: "0",
+    zIndex: 100
   };
   return (
     //the position is fixed to display it on top of others.

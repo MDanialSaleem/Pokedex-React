@@ -1,6 +1,8 @@
 import React from "react";
 import { Row, Col } from "react-grid-system";
 import GlobalContext from "../../context/Global/globalContext";
+import Button from "../SharedComponents/Button";
+import List from "../../Util/data";
 
 const Searchbar = () => {
   const globalContext = React.useContext(GlobalContext);
@@ -20,20 +22,14 @@ const Searchbar = () => {
     } //if a name was submitted. Number.parseInt return NaN if it can't convert the string to a valid number.
     else {
       // eslint-disable-next-line no-param-reassign
-      // value = value.toLowerCase(); //to prevent case issues.
-      // const index = props.list.findIndex(pokemon => pokemon === value);
-      // if (index !== -1) {
-      //   setError(false);
-      //   if (index + 1 !== props.id) {
-      //     props.loadNew(index + 1);
-      //   }
-      //   props.startLoading();
-      //   props.loadNew(index + 1);
-      // } else {
-      //   setError(true);
-      // }
-
-      throw new Error("heck lmao");
+      value = value.toLowerCase(); //to prevent case issues.
+      const index = List.findIndex(pokemon => pokemon === value);
+      if (index !== -1) {
+        setError(false);
+        globalContext.loadNewPokemon(index + 1);
+      } else {
+        setError(true);
+      }
     }
   };
 
@@ -43,14 +39,6 @@ const Searchbar = () => {
     } else {
       setCurrentValue(eventObj.target.value);
     }
-  };
-
-  const buttonStyles = {
-    boxSizing: "border-box",
-    border: "3px solid lightblue",
-    borderRadius: "10px",
-    fontSize: "30px",
-    width: "100%"
   };
 
   const inputStyles = {
@@ -63,7 +51,7 @@ const Searchbar = () => {
   };
   return (
     <>
-      <Row>
+      <Row align="center" style={{ padding: "10px 0px" }}>
         <Col sm={8}>
           <input
             style={inputStyles}
@@ -73,13 +61,13 @@ const Searchbar = () => {
           />
         </Col>
         <Col sm={4}>
-          <button
-            type="button"
-            style={buttonStyles}
+          <Button
+            style={{ margin: "10px 0px" }}
+            sz="lg"
             onClick={() => handleInitialSubmit(currentValue)}
           >
             Search
-          </button>
+          </Button>
         </Col>
       </Row>
       <Row>{error ? <h4>No Such Pokemon</h4> : null}</Row>

@@ -13,15 +13,10 @@ const Move = props => {
     flexDirection: "row",
     justifyContent: "space-between",
     alignContent: "center",
-    width: "30%",
     border: "2px solid darkblue",
     background: "lightsteelblue",
     borderRadius: "5px",
-    flexGrow: 1,
-    boxSizing: "border-box",
-    "@media (max-width: 600px)": {
-      width: "100%"
-    }
+    boxSizing: "border-box"
   };
 
   const headingStyle = {

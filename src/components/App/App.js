@@ -30,13 +30,13 @@ const App = () => {
           <Container>
             <Searchbar />
             {globalContext.data !== null ? (
-              <BasicInfo
-                id={globalContext.nationalId}
-                data={globalContext.data}
-              />
-            ) : null}
-            {globalContext.data !== null ? (
-              <MoveCard moves={globalContext.data.moves} />
+              <>
+                <BasicInfo
+                  id={globalContext.nationalId}
+                  data={globalContext.data}
+                />
+                <MoveCard moves={globalContext.data.moves} />
+              </>
             ) : null}
           </Container>
         </div>
